@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gameStore</title>
+</head>
+
+<body>
+    <div>
+        <div class="header-title">
+            <div class="search-bar">
+                <input type="text" placeholder="搜索商城">
+            </div>
+            <span class="header-tab">探索</span>
+            <span class="header-tab">浏览</span>
+            <span class="header-tab">新闻</span>
+        </div>
+        <div class="banners">
+            <img src="https://cdn2.unrealengine.com/zh-cn-mega-sale-3up-ms-banner-asset-1920x1080-e856160e3f8f.jpg?resize=1&w=854&h=480&quality=medium"
+                alt="大特卖">
+            <img src="https://cdn2.unrealengine.com/zhcn-rewards-boosted-breaker-asset-0e035d40e0ed.avif?resize=1&w=854&h=480&quality=medium"
+                alt="奖励升级">
+            <img src="https://cdn2.unrealengine.com/zh-cn-mega-sale-3up-fg-banner-asset-1920x1080-9903363bd29b.jpg?resize=1&w=854&h=480&quality=medium"
+                alt="精选大放送">
+        </div>
+        <div class="main-content">
+            <div class="featured">
+                <img src="https://cdn2.unrealengine.com/egs-popucom-carousel-desktop-v2-1920x1080-44efcd1fb118.jpeg?resize=1&w=854&h=480&quality=medium"
+                    alt="泡泡海咚海咚">
+            </div>
+            <div class="sidebar">
+                <ul class="main-content-item">
+                    <li class="main-content-item1">
+                        <div>
+                            <img src="https://cdn2.unrealengine.com/egs-red-dead-redemption-2-carousel-thumbnail-340x440-efc21627fd8c.jpg?resize=1&w=96&h=128&quality=medium"
+                                alt="Play Red Dead Redemption 2 on Epic Games Store">
+                        </div>
+                        <span>《Red Dead Redemption 2》</span>
+                    </li>
+                    <li class="main-content-item1">
+                        <div>
+                            <img src="https://cdn2.unrealengine.com/egs-blades-of-fire-carousel-thumb-1200x1600-eb1a19ecef09.jpg?resize=1&w=96&h=128&quality=medium"
+                                alt="Play Red Dead Redemption 2 on Epic Games Store">
+                        </div>
+                        <span>《Blades of Fire》</span>
+                    </li>
+                    <li class="main-content-item1">
+                        <div>
+                            <img src="https://cdn2.unrealengine.com/egs-the-last-of-us-p1-carousel-thumb-1200x1600-23eff016493e.jpg?resize=1&w=96&h=128&quality=medium"
+                                alt="Play Red Dead Redemption 2 on Epic Games Store">
+                        </div>
+                        <span>《The Last of Us™》Part I</span>
+                    </li>
+                    <li class="main-content-item1">
+                        <div>
+                            <img src="https://cdn2.unrealengine.com/cn-egs-crystal-of-atlan-carousel-thumb-1200x1600-9c89da9077bf.jpg?resize=1&w=96&h=128&quality=medium"
+                                alt="Play Red Dead Redemption 2 on Epic Games Store">
+                        </div>
+                        <span>《晶核》</span>
+                    </li>
+                    <li class="main-content-item1">
+                        <div>
+                            <img src="https://cdn2.unrealengine.com/egs-cyberpunk2077-cdprojektred-s2-03-1200x1600-1200x1600-c3485b536a53.jpg?resize=1&w=96&h=128&quality=medium"
+                                alt="Play Red Dead Redemption 2 on Epic Games Store">
+                        </div>
+                        <span>《赛博朋克 2077》</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="content-game-item">
+            <div class="title-bar">
+                <h1>尝鲜发现</h1>
+                <div class="arrow-buttons">
+                    <span id="arrow-left">←</span>
+                    <span id="arrow-right">→</span>
+                </div>
+            </div>
+            <ul class="game-list">
+                <li>
+                    <div class="game-card">
+                        <img src="https://cdn1.epicgames.com/spt-assets/f551e4fb31b34bd19991a31ed23522b1/silent-hill-2-19wjd.png?resize=1&w=360&h=480&quality=medium"
+                            alt="SILENT HILL 2">
+                        <span class="game-type">基础游戏</span>
+                        <span class="game-title">SILENT HILL 2</span>
+                        <span class="game-price">JP¥8,580</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="game-card">
+                        <img src="https://cdn1.epicgames.com/spt-assets/a09a1e719daa45c992dee7dd284ed51f/roadcraft-1b7fz.jpg?resize=1&w=360&h=480&quality=medium"
+                            alt="RoadCraft">
+                        <span class="game-type">基础游戏</span>
+                        <span class="game-title">RoadCraft</span>
+                        <span class="game-price">JP¥6,480</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="game-card">
+                        <img src="https://cdn1.epicgames.com/spt-assets/f0ac8939c29044bd9c188cb3146d122d/deadzone-rogue-zduu4.jpg?resize=1&w=360&h=480&quality=medium"
+                            alt="Soulmask">
+                        <span class="game-type">基础游戏</span>
+                        <span class="game-title">Soulmask</span>
+                        <span class="game-price">JP¥3,900</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="game-card">
+                        <img src="https://cdn1.epicgames.com/spt-assets/2543894b59ca408b9da109239139779f/soulmask-1rqsv.png?resize=1&w=360&h=480&quality=medium"
+                            alt="Deliver At All Costs">
+                        <span class="game-type">基础游戏</span>
+                        <span class="game-title">Deliver At All Costs</span>
+                        <span class="game-price">JP¥3,850</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="game-card">
+                        <img src="https://cdn1.epicgames.com/spt-assets/7f4fad59713248f981e112c626c9d0da/deliver-at-all-costs-srw60.png?resize=1&w=360&h=480&quality=medium"
+                            alt="Deadtime Defenders">
+                        <span class="game-type">基础游戏</span>
+                        <span class="game-title">Deadtime Defenders</span>
+                        <span class="game-price">JP¥970</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="game-card">
+                        <img src="https://cdn1.epicgames.com/spt-assets/e2ab063cf7714c29ad3261312a24a264/deadtime-defenders-1gchw.png?resize=1&w=360&h=480&quality=medium"
+                            alt="Deadzone: Rogue">
+                        <span class="game-type">基础游戏</span>
+                        <span class="game-title">Deadzone: Rogue</span>
+                        <span class="game-price">JP¥2,735</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="content-game-item-bottom">
+            <ul class="content-game-item-bottom-list">
+                <li>
+                    <div class="content-game-item-bottom-card">
+                        <img src="https://cdn2.unrealengine.com/fnbr-35-00-c6ms1-apprenticerey-darksidevisionrey-social-1920x1080-1920x1080-cc31b3dea71a.jpg?resize=1&w=854&h=480&quality=medium"
+                            alt="Play Red Dead Redemption 2 on Epic Games Store">
+                    </div>
+                    <span class="game-bottom-type">《Fortnite》</span>
+                    <span class="game-bottom-title">不要害怕真正的你。包含黑暗面视野蕾伊风格。</span>
+                    <span class="game-bottom-detail">在商城中查看</span>
+                </li>
+                <li>
+                    <div class="content-game-item-bottom-card">
+                        <img src="https://cdn2.unrealengine.com/fneco-34-40-oatmeal-social-1920x1080-1920x1080-25bc7d12b2ca.jpg?resize=1&w=854&h=480&quality=medium"
+                            alt="Play Red Dead Redemption 2 on Epic Games Store">
+                    </div>
+                    <span class="game-bottom-type">《Fortnite》</span>
+                    <span class="game-bottom-title">抓住机会，与场边螈和 Stix 并肩出击！</span>
+                    <span class="game-bottom-detail">在商城中查看</span>
+                </li>
+                <li>
+                    <div class="content-game-item-bottom-card">
+                        <img src="https://cdn2.unrealengine.com/fnbr-35-00-c6ms1-egs-kyloren-breaker-1920x1080-1920x1080-e3ffe2eb9076.jpg?resize=1&w=854&h=480&quality=medium"
+                            alt="Play Red Dead Redemption 2 on Epic Games Store">
+                    </div>
+                    <span class="game-bottom-type">《Fortnite》</span>
+                    <span class="game-bottom-title">最高领袖已然亲临。立刻来道具商城入手凯洛·伦皮肤！</span>
+                    <span class="game-bottom-detail">在商城中查看</span>
+                </li>
+            </ul>
+        </div>
+        <div class="free-game">
+            <div class="free-game-title">
+                <span>免费游戏</span>
+                <span class="free-game-title-last">查看更多</span>
+            </div>
+            <div class="free-game-content">
+                <ul class="free-game-list">
+                    <li>
+                        <div class="free-game-card">
+                            <img src="https://cdn1.epicgames.com/offer/d5241c76f178492ea1540fce45616757/Day7tall_1200x1600-b64b7e087d5bc3b29085a390ea79a7e9?resize=1&w=360&h=480&quality=medium"
+                                alt="Play Red Dead Redemption 2 on Epic Games Store">
+                        </div>
+                        <span class="free-game-list-title">
+                            Limbo
+                        </span>
+                        <span class="free-game-list-detail">
+                            当前免费，6月06日00:00截至
+                        </span>
+                    </li>
+                    <li>
+                        <div class="free-game-card">
+                            <img src="https://cdn1.epicgames.com/offer/d5241c76f178492ea1540fce45616757/TinyTinatall_1200x1600-356dd4965bde4c5dbd1000f9c97ac4b4?resize=1&w=360&h=480&quality=medium"
+                                alt="Play Red Dead Redemption 2 on Epic Games Store">
+                        </div>
+                        <span class="free-game-list-title">
+                            Tiny Tina's Wonderlands
+                        </span>
+                        <span class="free-game-list-detail">
+                            当前免费，6月06日00:00截至
+                        </span>
+                    </li>
+                    <li>
+                        <div class="free-game-card">
+                            <img src="https://cdn1.epicgames.com/offer/d5241c76f178492ea1540fce45616757/egs-vault-carousel-mobile-thumbnail-1200x160011_1200x1600-d91e66eade3c5f1b438dcfa9e2de4011?resize=1&w=360&h=480&quality=medium"
+                                alt="Play Red Dead Redemption 2 on Epic Games Store">
+                        </div>
+                        <span class="free-game-list-title">
+                            在6月06日00:00截至
+                        </span>
+
+                    </li>
+                    <li>
+                        <div class="free-game-card">
+                            <img src="https://cdn1.epicgames.com/offer/d5241c76f178492ea1540fce45616757/egs-vault-carousel-mobile-thumbnail-1200x160011_1200x1600-d91e66eade3c5f1b438dcfa9e2de4011?resize=1&w=360&h=480&quality=medium"
+                                alt="Play Red Dead Redemption 2 on Epic Games Store">
+                        </div>
+                        <span class="free-game-list-title">
+                            在6月06日00:00截至
+                        </span>
+
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="game-footer">
+            <div class="game-footer1">
+                <div class="game-footer-title">
+                    <h1>全新发行 ></h1>
+                </div>
+                <div class="game-footer-content">
+                    <ul class="game-footer-list">
+                        <li>
+                            <div class="game-footer-card">
+                                <img src="https://cdn1.epicgames.com/spt-assets/5cdff2a30f614652a7030a3953871e93/chancelot-td-merge-wars-1fjlw.png?resize=1&w=360&h=480&quality=medium"
+                                    alt="Play Red Dead Redemption 2 on Epic Games Store">
+                            </div>
+                            <div>
+                                <span class="game-footer-title">Chancelot TD: Merge Wars</span>
+                                <span class="game-footer-type">Epic 始发</span>
+                                <span class="game-footer-price">JP¥1,460</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="game-footer-card">
+                                <img src="https://cdn1.epicgames.com/spt-assets/2ec1df01546e4dbd89a5158b0799586f/water-delivery-18r34.png?resize=1&w=360&h=480&quality=medium"
+                                    alt="Play Red Dead Redemption 2 on Epic Games Store">
+                            </div>
+                            <div>
+                                <span class="game-footer-title">Water Delivery</span>
+                                <span class="game-footer-type">Epic 始发</span>
+                                <span class="game-footer-price">JP¥580</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="game-footer-card">
+                                <img src="https://cdn1.epicgames.com/spt-assets/08ad9b8f6b8f4357bde7fe238ba923e4/bible-puzzle-2j4af.jpg?resize=1&w=360&h=480&quality=medium"
+                                    alt="Play Red Dead Redemption 2 on Epic Games Store">
+                            </div>
+                            <div>
+                                <span class="game-footer-title">Bible Puzzle: Christian Game</span>
+                                <span class="game-footer-type">Epic 始发</span>
+                                <span class="game-footer-price">JP¥390</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="game-footer-card">
+                                <img src="https://cdn1.epicgames.com/spt-assets/fc1240c6ea4d41af8f2e174bed1ac5ef/cellveillance-ous1n.jpg?resize=1&w=360&h=480&quality=medium"
+                                    alt="Play Red Dead Redemption 2 on Epic Games Store">
+                            </div>
+                            <div>
+                                <span class="game-footer-title">Cellveillance</span>
+                                <span class="game-footer-type">Epic 始发</span>
+                                <span class="game-footer-price">JP¥1000</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="game-footer-card">
+                                <img src="https://cdn1.epicgames.com/spt-assets/7080ef0760434aca9ae0c4fa259c7493/journey-up-1xf7a.png?resize=1&w=360&h=480&quality=medium"
+                                    alt="Play Red Dead Redemption 2 on Epic Games Store">
+                            </div>
+                            <div>
+                                <span class="game-footer-title">Journey Up</span>
+                                <span class="game-footer-type">Epic 始发</span>
+                                <span class="game-footer-price">JP¥1,460</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="vertical-line"></div>
+            </div>
+            <div class="game-footer1">
+                <div class="game-footer-title">
+                    <h1>最高玩家评分 ></h1>
+                </div>
+                <div class="game-footer-content">
+                    <ul class="game-footer-list">
+                        <li>
+                            <div class="game-footer-card">
+                                <img src="https://cdn1.epicgames.com/spt-assets/5cdff2a30f614652a7030a3953871e93/chancelot-td-merge-wars-1fjlw.png?resize=1&w=360&h=480&quality=medium"
+                                    alt="Play Red Dead Redemption 2 on Epic Games Store">
+                            </div>
+                            <div>
+                                <span class="game-footer-title">Chancelot TD: Merge Wars</span>
+                                <span class="game-footer-type">Epic 始发</span>
+                                <span class="game-footer-price">JP¥1,460</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="game-footer-card">
+                                <img src="https://cdn1.epicgames.com/spt-assets/2ec1df01546e4dbd89a5158b0799586f/water-delivery-18r34.png?resize=1&w=360&h=480&quality=medium"
+                                    alt="Play Red Dead Redemption 2 on Epic Games Store">
+                            </div>
+                            <div>
+                                <span class="game-footer-title">Water Delivery</span>
+                                <span class="game-footer-type">Epic 始发</span>
+                                <span class="game-footer-price">JP¥580</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="game-footer-card">
+                                <img src="https://cdn1.epicgames.com/spt-assets/08ad9b8f6b8f4357bde7fe238ba923e4/bible-puzzle-2j4af.jpg?resize=1&w=360&h=480&quality=medium"
+                                    alt="Play Red Dead Redemption 2 on Epic Games Store">
+                            </div>
+                            <div>
+                                <span class="game-footer-title">Bible Puzzle: Christian Game</span>
+                                <span class="game-footer-type">Epic 始发</span>
+                                <span class="game-footer-price">JP¥390</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="game-footer-card">
+                                <img src="https://cdn1.epicgames.com/spt-assets/fc1240c6ea4d41af8f2e174bed1ac5ef/cellveillance-ous1n.jpg?resize=1&w=360&h=480&quality=medium"
+                                    alt="Play Red Dead Redemption 2 on Epic Games Store">
+                            </div>
+                            <div>
+                                <span class="game-footer-title">Cellveillance</span>
+                                <span class="game-footer-type">Epic 始发</span>
+                                <span class="game-footer-price">JP¥1000</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="game-footer-card">
+                                <img src="https://cdn1.epicgames.com/spt-assets/7080ef0760434aca9ae0c4fa259c7493/journey-up-1xf7a.png?resize=1&w=360&h=480&quality=medium"
+                                    alt="Play Red Dead Redemption 2 on Epic Games Store">
+                            </div>
+                            <div>
+                                <span class="game-footer-title">Journey Up</span>
+                                <span class="game-footer-type">Epic 始发</span>
+                                <span class="game-footer-price">JP¥1,460</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="vertical-line"></div>
+            </div>
+            <div class="game-footer1">
+                <div class="game-footer-title">
+                    <h1>即将推出 ></h1>
+                </div>
+                <div class="game-footer-content">
+                    <ul class="game-footer-list">
+                        <li>
+                            <div class="game-footer-card">
+                                <img src="https://cdn1.epicgames.com/spt-assets/5cdff2a30f614652a7030a3953871e93/chancelot-td-merge-wars-1fjlw.png?resize=1&w=360&h=480&quality=medium"
+                                    alt="Play Red Dead Redemption 2 on Epic Games Store">
+                            </div>
+                            <div>
+                                <span class="game-footer-title">Chancelot TD: Merge Wars</span>
+                                <span class="game-footer-type">Epic 始发</span>
+                                <span class="game-footer-price">JP¥1,460</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="game-footer-card">
+                                <img src="https://cdn1.epicgames.com/spt-assets/2ec1df01546e4dbd89a5158b0799586f/water-delivery-18r34.png?resize=1&w=360&h=480&quality=medium"
+                                    alt="Play Red Dead Redemption 2 on Epic Games Store">
+                            </div>
+                            <div>
+                                <span class="game-footer-title">Water Delivery</span>
+                                <span class="game-footer-type">Epic 始发</span>
+                                <span class="game-footer-price">JP¥580</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="game-footer-card">
+                                <img src="https://cdn1.epicgames.com/spt-assets/08ad9b8f6b8f4357bde7fe238ba923e4/bible-puzzle-2j4af.jpg?resize=1&w=360&h=480&quality=medium"
+                                    alt="Play Red Dead Redemption 2 on Epic Games Store">
+                            </div>
+                            <div>
+                                <span class="game-footer-title">Bible Puzzle: Christian Game</span>
+                                <span class="game-footer-type">Epic 始发</span>
+                                <span class="game-footer-price">JP¥390</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="game-footer-card">
+                                <img src="https://cdn1.epicgames.com/spt-assets/fc1240c6ea4d41af8f2e174bed1ac5ef/cellveillance-ous1n.jpg?resize=1&w=360&h=480&quality=medium"
+                                    alt="Play Red Dead Redemption 2 on Epic Games Store">
+                            </div>
+                            <div>
+                                <span class="game-footer-title">Cellveillance</span>
+                                <span class="game-footer-type">Epic 始发</span>
+                                <span class="game-footer-price">JP¥1000</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="game-footer-card">
+                                <img src="https://cdn1.epicgames.com/spt-assets/7080ef0760434aca9ae0c4fa259c7493/journey-up-1xf7a.png?resize=1&w=360&h=480&quality=medium"
+                                    alt="Play Red Dead Redemption 2 on Epic Games Store">
+                            </div>
+                            <div>
+                                <span class="game-footer-title">Journey Up</span>
+                                <span class="game-footer-type">Epic 始发</span>
+                                <span class="game-footer-price">JP¥1,460</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<style>
+    body {
+        background-color: #111;
+    }
+
+    .header-title {
+        display: flex;
+        gap: 20px;
+        margin-top: 20px;
+    }
+
+    .search-bar {
+        margin-top: 100px;
+        margin-left: 250px;
+    }
+
+    .search-bar input {
+        width: 200px;
+        padding: 10px;
+        border: none;
+        border-radius: 30px;
+        background-color: rgb(64, 64, 68);
+    }
+
+    .header-tab {
+        color: gray;
+        margin-top: 105px;
+    }
+
+    .banners {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 20px;
+        margin-left: 40px;
+    }
+
+    .banners img {
+        width: 25%;
+        border-radius: 10px;
+    }
+
+    .featured {
+        margin-left: 255px;
+        margin-top: 50px;
+        width: 1100px;
+    }
+
+    .main-content {
+        display: flex;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .featured img {
+        border-radius: 10px;
+        width: 100%;
+    }
+
+    .main-content-item {
+        display: flex;
+        flex-direction: column;
+        gap: 33px;
+    }
+
+    .main-content-item li {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 0;
+    }
+
+    .main-content-item1 div {
+        display: flex;
+        align-items: center;
+        width: 20%;
+    }
+
+    .main-content-item1 img {
+        width: 100%;
+        height: auto;
+        border-radius: 5px;
+    }
+
+    .main-content-item1 span {
+        color: white;
+        font-size: small;
+    }
+
+    .sidebar {
+        width: 300px;
+        margin-top: 35px;
+    }
+
+    .main-content-item1:hover {
+        background-color: #2a2a2a;
+        border-radius: 5px;
+    }
+
+    .content-game-item {
+        margin-top: 40px;
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .content-game-item>div {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .content-game-item h1 {
+        font-size: 24px;
+        font-weight: bold;
+        margin: 0;
+    }
+
+    .title-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: white;
+        width: 1300px;
+        margin-left: 40px;
+    }
+
+    .game-list {
+        display: flex;
+        gap: 20px;
+        margin-top: 20px;
+        overflow-x: auto;
+        padding-bottom: 10px;
+    }
+
+    .game-list li {
+        list-style: none;
+        flex: 0 0 auto;
+        width: 200px;
+    }
+
+    .game-card {
+        background-color: #1f1f1f;
+        border-radius: 10px;
+        overflow: hidden;
+        transition: transform 0.2s ease;
+    }
+
+    .game-card:hover {
+        transform: scale(1.03);
+    }
+
+    .game-card img {
+        width: 100%;
+        border-bottom: 1px solid #333;
+        display: block;
+    }
+
+    .game-card span {
+        display: block;
+        padding: 6px 10px;
+    }
+
+    .game-type {
+        font-size: 12px;
+        color: #bbb;
+    }
+
+    .game-title {
+        font-weight: bold;
+        margin-top: 4px;
+        color: #fff;
+    }
+
+    .game-price {
+        color: #ccc;
+        margin-top: 4px;
+    }
+
+    .content-game-item-bottom {
+        margin-top: 60px;
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .content-game-item-bottom-list {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+
+    }
+
+    .content-game-item-bottom-card {
+        width: 460px;
+    }
+
+    .content-game-item-bottom img {
+        width: 100%;
+        border-radius: 20px;
+    }
+
+    .content-game-item-bottom img:hover {
+        transform: scale(1.03);
+    }
+
+    .game-bottom-type {
+        font-size: larger;
+        color: white;
+        display: block;
+        margin-top: 15px;
+    }
+
+    .game-bottom-title {
+        font-size: smaller;
+        color: #bbb;
+        display: block;
+        margin-top: 15px;
+    }
+
+    .game-bottom-detail {
+        font-size: larger;
+        color: white;
+        background-color: rgb(64, 64, 68);
+        border-radius: 20px;
+        display: block;
+        margin-top: 15px;
+        width: 150px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .game-bottom-detail:hover {
+        background-color: grey
+    }
+
+    .free-game {
+        margin-top: 60px;
+        max-width: 1450px;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: rgb(64, 64, 68);
+        border-radius: 20px;
+    }
+
+    .free-game-title {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px;
+        color: white;
+    }
+
+    .free-game-title-last {
+        color: white;
+        border: 1px solid white;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+
+    .free-game-title-last:hover {
+        transform: scale(1.03);
+    }
+
+    .free-game-content {
+        max-width: 1400px;
+
+    }
+
+    .free-game-card {
+        width: 322px;
+    }
+
+    .free-game-card img {
+        width: 100%;
+        border-radius: 10px;
+    }
+
+    .free-game-card img:hover {
+        transform: scale(1.01);
+    }
+
+    .free-game-list {
+        display: flex;
+        gap: 20px;
+        margin-top: 20px;
+        overflow-x: auto;
+        list-style: none;
+    }
+
+    .free-game-list-title {
+        display: block;
+        color: white;
+    }
+
+    .free-game-list-detail {
+        display: block;
+        color: #bbb;
+    }
+
+    .game-footer {
+        margin-top: 60px;
+        display: flex;
+    }
+
+    .game-footer-list li {
+        display: flex;
+
+        gap: 20px;
+        margin-bottom: 20px;
+    }
+
+    .game-footer-list li:hover {
+        background-color: rgb(64, 64, 68);
+        border-radius: 10px;
+    }
+
+    .game-footer-card {
+        width: 96px;
+    }
+
+    .game-footer-card img {
+        width: 100%;
+        border-radius: 10px;
+    }
+
+    .game-footer-content div {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+
+    }
+
+    .game-footer-title {
+        color: white;
+        font-weight: bolder;
+        display: block;
+        font-size: smaller;
+    }
+
+    .game-footer-type {
+        color: white;
+        background-color: rgb(64, 64, 68);
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 70px;
+    }
+
+    .game-footer-price {
+        color: white;
+        display: block;
+    }
+
+    .game-footer1 {
+        margin-left: 200px;
+    }
+</style>
+
+</html>
