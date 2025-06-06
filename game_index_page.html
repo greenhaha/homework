@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>游戏首页</title>
+    <style>
+        /* 重置默认样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: white;  /* 设置全局字体颜色为白色 */
+            background-color: #282829;
+        }
+
+        /* 确保所有文字都是白色 */
+        * {
+            color: white;
+        }
+
+        /* 顶部导航栏样式 */
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background-color: #333;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;  /* 两端对齐 */
+            padding: 0 20px;
+            z-index: 1000;
+        }
+
+        .top-bar h1 {
+            font-size: 24px;
+            font-weight: 500;
+        }
+
+        /* 导航按钮容器 */
+        .nav-buttons {
+            display: flex;
+            gap: 15px;  /* 按钮之间的间距 */
+        }
+
+        /* 导航按钮样式 */
+        .nav-button {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 20px;  /* 圆角 */
+            background-color: #4383ad;  /* 深灰色背景 */
+            color: white;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        /* 按钮悬停效果 */
+        .nav-button:hover {
+            background-color: #abb5ee;  /* 更亮的灰色 */
+            transform: translateY(-2px);  /* 轻微上浮效果 */
+        }
+
+        /* 按钮聚焦效果 */
+        .nav-button:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);  /* 白色光晕效果 */
+        }
+
+        /* 主要内容区域样式 */
+        .main-content {
+            margin-top: 80px;
+            padding: 30px 10%;
+            background-color: #282829;
+        }
+
+        /* 搜索框容器样式 */
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        /* 搜索框样式 */
+        .search-box {
+            width: 100%;
+            padding: 12px 20px;
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            font-size: 16px;
+            outline: none;
+            color: black;
+        }
+
+        .search-box:focus {
+            border-color: #007bff;
+        }
+
+        .search-box::placeholder {
+            color: #666;
+        }
+
+        /* 卡片容器样式 */
+        .cards-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            flex-wrap: nowrap;
+            padding-bottom: 25px;
+        }
+
+        /* 卡片样式 */
+        .card {
+            width: 100%;
+            height: 100%;
+            background-color: #007bff;
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+            /* 鼠标悬停时显示手型 */
+            cursor: pointer;
+            /* 默认值，开始慢，中间快，结束慢 */
+            transition: all 0.3s ease;
+        }
+
+        /* 卡片悬停效果 */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0);
+            transition: background-color 0.3s ease;
+        }
+
+        .card:hover::before {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .card-with-words {
+            width: 20%;
+            display: flex;
+            flex-direction: column;  /* 垂直排列 */
+            gap: 10px;  /* 卡片和文字之间的间距 */
+        }
+
+        .card-with-words .card {
+            width: 100%;
+            height: 200px;  /* 固定卡片高度 */
+        }
+
+        .card-with-words-text {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;  /* 文字之间的间距 */
+        }
+
+        .card-with-words-text p {
+            margin: 0;
+            font-size: 20px;
+            color: white !important;  /* 强制覆盖其他样式 */
+        }
+
+        .card-with-words-text span p {
+            color: white !important;  /* 强制覆盖其他样式 */
+        }
+
+        .card-with-words-text span {
+            color: white !important;  /* 强制覆盖其他样式 */
+        }
+
+        .three-ranks-div {
+            padding-bottom: 20px;
+            display: flex;
+            flex-direction: row;  /* 改为水平排列 */
+            gap: 20px;
+            justify-content: space-between;  /* 平均分配空间 */
+        }
+
+        .tree-ranks-div-content {
+            border-radius: 10px;
+            padding: 20px;
+            flex: 1;
+            min-width: 300px;
+            position: relative;  /* 为分割线定位 */
+        }
+
+        /* 添加分割线样式 */
+        .tree-ranks-div-content:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: -10px;  /* 分割线位置 */
+            top: 20px;
+            bottom: 20px;
+            width: 1px;
+            background-color: rgba(255, 255, 255, 0.2);  /* 白色半透明分割线 */
+        }
+
+        .tree-ranks-div-title {
+            margin-bottom: 15px;
+        }
+
+        .tree-ranks-div-title h3 {
+            font-size: 20px;
+            color: white;
+            margin: 0;
+        }
+
+        .tree-ranks-div-content-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .tree-ranks-div-content-list-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 10px;
+            border-radius: 8px;
+            transition: transform 0.2s ease;
+        }
+
+        .tree-ranks-div-content-list-item:hover {
+            transform: translateX(5px);
+        }
+
+        .tree-ranks-div-content-list-item-img {
+            width: 80px;
+            height: 80px;
+            background-color: #ddd;
+            border-radius: 8px;
+        }
+
+        .tree-ranks-div-content-list-item-text {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .tree-ranks-div-content-list-item-text p {
+            margin: 0;
+            line-height: 1.4;
+            color: white;
+        }
+
+        .tree-ranks-div-content-list-item-text p:first-child {
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .tree-ranks-div-content-list-item-text p:nth-child(2) {
+            font-size: 14px;
+            color: white;
+        }
+
+        .tree-ranks-div-content-list-item-text p:last-child {
+            font-size: 12px;
+            color: white;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <h1>游戏首页</h1>
+        <div class="nav-buttons">
+            <button class="nav-button">登录</button>
+            <button class="nav-button">注册</button>
+        </div>
+    </div>
+    
+    <main class="main-content">
+        <div class="search-container">
+            <input type="text" class="search-box" placeholder="搜索游戏...">
+        </div>
+
+        <div class="cards-container" style="height: 200px;">
+            <div class="card"></div>
+            <div class="card"></div>
+            <div class="card"></div>
+        </div>
+
+        <div class="cards-container" style="justify-content: left; height: 400px;">
+            <div class="card" style="background-color: #697179; width: 70%;"></div>
+            <div class="card" style="background-color: #697179; width: 30%; padding-left: 5px;" ></div>
+        </div>
+
+        <div class="game-four-divs" style="padding-bottom: 40px;">
+            <span>
+                <h2 style="padding-bottom: 20px;">尝鲜发现 ></h2>
+            </span>
+            <div class="cards-container" style="height: 500px;">
+                <div class="card-with-words" style=" width: 20%;">
+                    <div class="card" style="height: 400px; background-color: #399e52;"></div>
+                    <div class="card-with-words-text">
+                        <p>基础游戏</p>
+                        <p>123</p>
+                        <p>123</p>
+                    </div>
+                    
+                </div>
+                <div class="card-with-words" style="width: 20%;">
+                    <div class="card" style="height: 400px; background-color: #399e52;"></div>
+                    <div class="card-with-words-text">
+                        <span><p>基础游戏</p></span>
+                        <span><p>123</p></span>
+                        <span><p>123</p></span>
+                    </div>
+                </div>
+                <div class="card-with-words" style="width: 20%;">
+                    <div class="card" style="height: 400px; background-color: #399e52;"></div>
+                    <div class="card-with-words-text">
+                        <span><p>基础游戏</p></span>
+                        <span><p>123</p></span>
+                        <span><p>123</p></span>
+                    </div>
+                </div>
+                <div class="card-with-words" style="width: 20%;">
+                    <div class="card" style="height: 400px;background-color: #399e52;"></div>
+                    <div class="card-with-words-text">
+                        <span><p>基础游戏</p></span>
+                        <span><p>123</p></span>
+                        <span><p>123</p></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="game-three-divs" style="padding-bottom: 40px;">
+            <div class="cards-container" style="height: 300px;">
+                <div class="card-with-words" style="width: 30%;">
+                    <div class="card" style="background-color: #a73581;"></div>
+                    <div class="card-with-words-text">
+                        <p>基础游戏</p>
+                        <p>123</p>
+                        <p>123</p>
+                    </div>
+                </div>
+                <div class="card-with-words" style="width: 30%;">
+                    <div class="card" style="background-color: #a73581;"></div>
+                    <div class="card-with-words-text">
+                        <p>基础游戏</p>
+                        <p>123</p>
+                        <p>123</p>
+                    </div>
+                </div>
+                <div class="card-with-words" style="width: 30%;">
+                    <div class="card" style="background-color: #a73581;"></div>
+                    <div class="card-with-words-text">
+                        <p>基础游戏</p>
+                        <p>123</p>
+                        <p>123</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="game-four-divs" style="padding-bottom: 0px;">
+            <span>
+                <h2 style="padding-bottom: 20px;">大特卖聚焦 ></h2>
+            </span>
+            <div class="cards-container" style="height: 300px;">
+                <div class="card-with-words" style=" width: 20%;">
+                    <div class="card" style="height: 400px; background-color: #399e52;"></div>
+                    <div class="card-with-words-text">
+                        <p>基础游戏</p>
+                        <p>123</p>
+                        <p>123</p>
+                    </div>
+                    
+                </div>
+                <div class="card-with-words" style="width: 20%;">
+                    <div class="card" style="height: 400px; background-color: #399e52;"></div>
+                    <div class="card-with-words-text">
+                        <span><p>基础游戏</p></span>
+                        <span><p>123</p></span>
+                        <span><p>123</p></span>
+                    </div>
+                </div>
+                <div class="card-with-words" style="width: 20%;">
+                    <div class="card" style="height: 400px; background-color: #399e52;"></div>
+                    <div class="card-with-words-text">
+                        <span><p>基础游戏</p></span>
+                        <span><p>123</p></span>
+                        <span><p>123</p></span>
+                    </div>
+                </div>
+                <div class="card-with-words" style="width: 20%;">
+                    <div class="card" style="height: 400px;background-color: #399e52;"></div>
+                    <div class="card-with-words-text">
+                        <span><p>基础游戏</p></span>
+                        <span><p>123</p></span>
+                        <span><p>123</p></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="game-three-divs" style="padding-bottom: 40px;">
+            <div class="cards-container" style="height: 500px;">
+                <div class="card-with-words" style="width: 30%;">
+                    <div class="card" style="background-color: #a73581;"></div>
+                    <div class="card-with-words-text">
+                        <p>基础游戏</p>
+                        <p>123</p>
+                        <p>123</p>
+                    </div>
+                </div>
+                <div class="card-with-words" style="width: 30%;">
+                    <div class="card" style="background-color: #a73581;"></div>
+                    <div class="card-with-words-text">
+                        <p>基础游戏</p>
+                        <p>123</p>
+                        <p>123</p>
+                    </div>
+                </div>
+                <div class="card-with-words" style="width: 30%;">
+                    <div class="card" style="background-color: #a73581;"></div>
+                    <div class="card-with-words-text">
+                        <p>基础游戏</p>
+                        <p>123</p>
+                        <p>123</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="three-ranks-div">
+            <div class="tree-ranks-div-content">
+                <!-- 第一个排行榜 -->
+                <div class="tree-ranks-div-title">
+                    <h3>最畅销 ></h3>
+                </div>
+                <div class="tree-ranks-div-content-list">
+                    <div class="tree-ranks-div-content-list-item">
+                        <div class="tree-ranks-div-content-list-item-img"></div>
+                        <div class="tree-ranks-div-content-list-item-text">
+                            <p>Red Dead Redemption 2</p>
+                            <p>-75%</p>
+                            <p>JP$2,154</p>
+                        </div>
+                    </div>
+                    <div class="tree-ranks-div-content-list-item">
+                        <div class="tree-ranks-div-content-list-item-img"></div>
+                        <div class="tree-ranks-div-content-list-item-text">
+                            <p>Red Dead Redemption 2</p>
+                            <p>-75%</p>
+                            <p>JP$2,154</p>>
+                        </div>
+                    </div>
+                    <div class="tree-ranks-div-content-list-item">
+                        <div class="tree-ranks-div-content-list-item-img"></div>
+                        <div class="tree-ranks-div-content-list-item-text">
+                            <p>Red Dead Redemption 2</p>
+                            <p>-75%</p>
+                            <p>JP$2,154</p>
+                        </div>
+                    </div>
+                    <div class="tree-ranks-div-content-list-item">
+                        <div class="tree-ranks-div-content-list-item-img"></div>
+                        <div class="tree-ranks-div-content-list-item-text">
+                            <p>Red Dead Redemption 2</p>
+                            <p>-75%</p>
+                            <p>JP$2,154</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tree-ranks-div-content">
+                <div class="tree-ranks-div-title">
+                    <h3>最畅销 ></h3>
+                </div>
+                <div class="tree-ranks-div-content-list">
+                    <div class="tree-ranks-div-content-list-item">
+                        <div class="tree-ranks-div-content-list-item-img"></div>
+                        <div class="tree-ranks-div-content-list-item-text">
+                            <p>Red Dead Redemption 2</p>
+                            <p>-75%</p>
+                            <p>JP$2,154</p>
+                        </div>
+                    </div>
+                    <div class="tree-ranks-div-content-list-item">
+                        <div class="tree-ranks-div-content-list-item-img"></div>
+                        <div class="tree-ranks-div-content-list-item-text">
+                            <p>Red Dead Redemption 2</p>
+                            <p>-75%</p>
+                            <p>JP$2,154</p>>
+                        </div>
+                    </div>
+                    <div class="tree-ranks-div-content-list-item">
+                        <div class="tree-ranks-div-content-list-item-img"></div>
+                        <div class="tree-ranks-div-content-list-item-text">
+                            <p>Red Dead Redemption 2</p>
+                            <p>-75%</p>
+                            <p>JP$2,154</p>
+                        </div>
+                    </div>
+                    <div class="tree-ranks-div-content-list-item">
+                        <div class="tree-ranks-div-content-list-item-img"></div>
+                        <div class="tree-ranks-div-content-list-item-text">
+                            <p>Red Dead Redemption 2</p>
+                            <p>-75%</p>
+                            <p>JP$2,154</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tree-ranks-div-content">
+                <div class="tree-ranks-div-title">
+                    <h3>最畅销 ></h3>
+                </div>
+                <div class="tree-ranks-div-content-list">
+                    <div class="tree-ranks-div-content-list-item">
+                        <div class="tree-ranks-div-content-list-item-img"></div>
+                        <div class="tree-ranks-div-content-list-item-text">
+                            <p>Red Dead Redemption 2</p>
+                            <p>-75%</p>
+                            <p>JP$2,154</p>
+                        </div>
+                    </div>
+                    <div class="tree-ranks-div-content-list-item">
+                        <div class="tree-ranks-div-content-list-item-img"></div>
+                        <div class="tree-ranks-div-content-list-item-text">
+                            <p>Red Dead Redemption 2</p>
+                            <p>-75%</p>
+                            <p>JP$2,154</p>>
+                        </div>
+                    </div>
+                    <div class="tree-ranks-div-content-list-item">
+                        <div class="tree-ranks-div-content-list-item-img"></div>
+                        <div class="tree-ranks-div-content-list-item-text">
+                            <p>Red Dead Redemption 2</p>
+                            <p>-75%</p>
+                            <p>JP$2,154</p>
+                        </div>
+                    </div>
+                    <div class="tree-ranks-div-content-list-item">
+                        <div class="tree-ranks-div-content-list-item-img"></div>
+                        <div class="tree-ranks-div-content-list-item-text">
+                            <p>Red Dead Redemption 2</p>
+                            <p>-75%</p>
+                            <p>JP$2,154</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 游戏网站. 保留所有权利。</p>
+    </footer>
+</body>
+</html>
