@@ -120,7 +120,6 @@
         .card {
             width: 100%;
             height: 100%;
-            background-color: #007bff;
             border-radius: 15px;
             position: relative;
             overflow: hidden;
@@ -269,7 +268,11 @@
             font-size: 12px;
             color: white;
         }
-        
+        img {
+            width: 100%;
+            height: 100%; 
+            object-fit: cover;
+        }
     </style>
 </head>
 <body>
@@ -287,14 +290,27 @@
         </div>
 
         <div class="cards-container" style="height: 200px;">
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
+            <div style="background-color: #5eb4e6b6;" class= "card">
+                <img src="https://cdn2-unrealengine-1251447533.file.myqcloud.com/zh-cn-mega-sale-3up-ms-banner-asset-1920x1080-e856160e3f8f.jpg?resize=1&w=854&h=480&quality=medium" alt="游戏图片">
+            </div>
+            <div style="background-color: #5eb4e6b6;" class="card">
+                <img src="https://cdn2-unrealengine-1251447533.file.myqcloud.com/zh-cn-mega-sale-3up-ms-banner-asset-1920x1080-e856160e3f8f.jpg?resize=1&w=854&h=480&quality=medium" alt="游戏图片">
+            </div>
+            <div style="background-color: #5eb4e6b6;" class="card">
+                <img src="https://cdn2-unrealengine-1251447533.file.myqcloud.com/zh-cn-mega-sale-3up-ms-banner-asset-1920x1080-e856160e3f8f.jpg?resize=1&w=854&h=480&quality=medium" alt="游戏图片">
+            </div>
         </div>
 
         <div class="cards-container" style="justify-content: left; height: 400px;">
-            <div class="card" style="background-color: #697179; width: 70%;"></div>
-            <div class="card" style="background-color: #697179; width: 30%; padding-left: 5px;" ></div>
+            <div class="card" style="background-color: #697179; gap: 15px;width: 70%;">
+                <img src="https://cdn2.unrealengine.com/egs-zzz-2-0-carousel-desktop-1920x1080-eb70885d3021.jpg?resize=1&w=1280&h=720&quality=medium" alt="游戏图片">
+            </div>
+            <div style="display: flex; flex-direction: column; gap:15px; width: 30%; padding-left: 5px;" >
+                <div class="card" style="height: 100px; background-color: #90e2a4;"></div>
+                <div class="card" style="height: 100px; background-color: #90e2a4;"></div>
+                <div class="card" style="height: 100px; background-color: #90e2a4;"></div>
+                <div class="card" style="height: 100px; background-color: #90e2a4;"></div>
+            </div>
         </div>
 
         <div class="game-four-divs" style="padding-bottom: 40px;">
@@ -303,36 +319,44 @@
             </span>
             <div class="cards-container" style="height: 500px;">
                 <div class="card-with-words" style=" width: 20%;">
-                    <div class="card" style="height: 400px; background-color: #399e52;"></div>
+                    <div class="card" style="height: 400px; background-color: #399e52;">
+                        <img src="https://cdn1.epicgames.com/spt-assets/f551e4fb31b34bd19991a31ed23522b1/silent-hill-2-19wjd.png?resize=1&w=360&h=480&quality=medium" alt="游戏图片">
+                    </div>
                     <div class="card-with-words-text">
-                        <p>基础游戏</p>
-                        <p>123</p>
-                        <p>123</p>
+                        <p style="font-size: 15px; color: #838282c2;">基础游戏</p>
+                        <p style="font-size: 20px; color: #d3cdcdc2;">SILENT HILL2</p>
+                        <p style="font-size: 17px; color: #d3cdcdc2;">JP¥8,580</p>
                     </div>
                     
                 </div>
                 <div class="card-with-words" style="width: 20%;">
-                    <div class="card" style="height: 400px; background-color: #399e52;"></div>
+                    <div class="card" style="height: 400px; background-color: #399e52;">
+                        <img src="https://cdn1.epicgames.com/spt-assets/f551e4fb31b34bd19991a31ed23522b1/silent-hill-2-19wjd.png?resize=1&w=360&h=480&quality=medium" alt="游戏图片">
+                    </div>
                     <div class="card-with-words-text">
-                        <span><p>基础游戏</p></span>
-                        <span><p>123</p></span>
-                        <span><p>123</p></span>
+                        <p style="font-size: 15px; color: #838282c2;">基础游戏</p>
+                        <p style="font-size: 20px; color: #d3cdcdc2;">SILENT HILL2</p>
+                        <p style="font-size: 17px; color: #d3cdcdc2;">JP¥8,580</p>
                     </div>
                 </div>
                 <div class="card-with-words" style="width: 20%;">
-                    <div class="card" style="height: 400px; background-color: #399e52;"></div>
+                    <div class="card" style="height: 400px; background-color: #399e52;">
+                        <img src="https://cdn1.epicgames.com/spt-assets/f551e4fb31b34bd19991a31ed23522b1/silent-hill-2-19wjd.png?resize=1&w=360&h=480&quality=medium" alt="游戏图片">
+                    </div>
                     <div class="card-with-words-text">
-                        <span><p>基础游戏</p></span>
-                        <span><p>123</p></span>
-                        <span><p>123</p></span>
+                        <p style="font-size: 15px; color: #838282c2;">基础游戏</p>
+                        <p style="font-size: 20px; color: #d3cdcdc2;">SILENT HILL2</p>
+                        <p style="font-size: 17px; color: #d3cdcdc2;">JP¥8,580</p>
                     </div>
                 </div>
                 <div class="card-with-words" style="width: 20%;">
-                    <div class="card" style="height: 400px;background-color: #399e52;"></div>
+                    <div class="card" style="height: 400px;background-color: #399e52;">
+                        <img src="https://cdn1.epicgames.com/spt-assets/f551e4fb31b34bd19991a31ed23522b1/silent-hill-2-19wjd.png?resize=1&w=360&h=480&quality=medium" alt="游戏图片">
+                    </div>
                     <div class="card-with-words-text">
-                        <span><p>基础游戏</p></span>
-                        <span><p>123</p></span>
-                        <span><p>123</p></span>
+                        <p style="font-size: 15px; color: #838282c2;">基础游戏</p>
+                        <p style="font-size: 20px; color: #d3cdcdc2;">SILENT HILL2</p>
+                        <p style="font-size: 17px; color: #d3cdcdc2;">JP¥8,580</p>
                     </div>
                 </div>
             </div>
@@ -341,27 +365,33 @@
         <div class="game-three-divs" style="padding-bottom: 40px;">
             <div class="cards-container" style="height: 300px;">
                 <div class="card-with-words" style="width: 30%;">
-                    <div class="card" style="background-color: #a73581;"></div>
+                    <div class="card" style="background-color: #a73581;">
+                        <img src="https://cdn2.unrealengine.com/en-17br-thanos-1920x1080-1920x1080-321c1941bf0b.jpg?resize=1&w=854&h=480&quality=medium" alt="游戏图片">
+                    </div>
                     <div class="card-with-words-text">
-                        <p>基础游戏</p>
-                        <p>123</p>
-                        <p>123</p>
+                        <p style="font-size: 20px; color: #838282c2; ">《Fortnite》</p>
+                        <p style="font-size: 15px; color: #d3cdcdc2; margin-bottom: 15px;">最艰难的抉择,需要最坚强的意志。泰坦已经降临，来宣示他的决定</p>
+                        <button style="font-size: 13px; color: #ffffff; width: 70%; height: 30%; background:  #4a90e2; border: none; border-radius: 4px;">在商场中查看</button>
                     </div>
                 </div>
                 <div class="card-with-words" style="width: 30%;">
-                    <div class="card" style="background-color: #a73581;"></div>
+                    <div class="card" style="background-color: #a73581;">
+                        <img src="https://cdn2.unrealengine.com/en-17br-thanos-1920x1080-1920x1080-321c1941bf0b.jpg?resize=1&w=854&h=480&quality=medium" alt="游戏图片">
+                    </div>
                     <div class="card-with-words-text">
-                        <p>基础游戏</p>
-                        <p>123</p>
-                        <p>123</p>
+                        <p style="font-size: 20px; color: #838282c2; ">《Fortnite》</p>
+                        <p style="font-size: 15px; color: #d3cdcdc2; margin-bottom: 15px;">最艰难的抉择,需要最坚强的意志。泰坦已经降临，来宣示他的决定</p>
+                        <button style="font-size: 13px; color: #ffffff; width: 70%; height: 30%; background:  #4a90e2; border: none; border-radius: 4px;">在商场中查看</button>
                     </div>
                 </div>
                 <div class="card-with-words" style="width: 30%;">
-                    <div class="card" style="background-color: #a73581;"></div>
+                    <div class="card" style="background-color: #a73581;">
+                        <img src="https://cdn2.unrealengine.com/en-17br-thanos-1920x1080-1920x1080-321c1941bf0b.jpg?resize=1&w=854&h=480&quality=medium" alt="游戏图片">
+                    </div>
                     <div class="card-with-words-text">
-                        <p>基础游戏</p>
-                        <p>123</p>
-                        <p>123</p>
+                        <p style="font-size: 20px; color: #838282c2; ">《Fortnite》</p>
+                        <p style="font-size: 15px; color: #d3cdcdc2; margin-bottom: 15px;">最艰难的抉择,需要最坚强的意志。泰坦已经降临，来宣示他的决定</p>
+                        <button style="font-size: 13px; color: #ffffff; width: 70%; height: 30%; background:  #4a90e2; border: none; border-radius: 4px;">在商场中查看</button>
                     </div>
                 </div>
             </div>
@@ -561,7 +591,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2024 游戏网站. 保留所有权利。</p>
+        <p>&copy; 2025 游戏网站. 保留所有权利。</p>
     </footer>
 </body>
 </html>
