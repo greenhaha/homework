@@ -1,0 +1,592 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>GameStore</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      background-color: black;
+      display: flex;
+      justify-content: center;
+    }
+
+    #container {
+      width: 80%;
+      display: flex;
+      flex-direction: column; /*改变排列方向为垂直方向*/
+      gap: 20px; /*子元素之间的垂直间距设置为 20 像素，每个块之间留有 20px*/
+      margin-top: 20px;
+    }
+
+    .section {
+      /* background-color: white; */
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .pic-opacity {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        overflow: hidden;
+        position: relative;
+        cursor: pointer;
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        margin: auto;
+        object-fit: fill;
+        display: block;
+    }
+
+    /* 遮罩层实现 */
+    .pic-opacity:after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(255, 255, 255, 0.4);
+      opacity: 0;
+      /* 增加淡入淡出的效果 */
+      transition: opacity 0.3s ease;
+    }
+
+    .pic-opacity:hover::after {
+      opacity: 1;
+    }
+
+    .three-boxes, .header-images {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .three-boxes .pic-opacity,
+    .header-images .pic-opacity {
+      width: 30%;
+      height: 200px;
+      /* background-color: blue; */
+    }
+
+    .body1 {
+      display: flex;
+      height: 600px;
+      /* background-color: white; */
+      padding: 10px;
+      justify-content: space-between;
+    }
+
+    .body1-left {
+      width: 70%;
+      /* background-color: blue; */
+    }
+
+    .body1-right {
+      width: 25%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .body1-right .pic-opacity {
+      height: 15%;
+      /* background-color: red; */
+    }
+
+    .section-title {
+      display: flex;
+      justify-content: space-between;
+      height: 50px;
+      align-items: center;
+      /* background-color: antiquewhite; */
+    }
+
+    .section-title .text {
+      color: black;
+    }
+
+    .section-title .icons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .section-title .icons .pic-opacity {
+      width: 50px;
+      height: 50px;
+      /* background-color: pink; */
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .game-list {
+      display: flex;
+      justify-content: space-between;
+      /* background-color: white; */
+      padding: 10px;
+      height: 300px;
+    }
+
+    .game-list .pic-opacity {
+      width: 15%;
+      /* background-color: blue; */
+    }
+
+    .free-game {
+      /* background-color: blanchedalmond; */
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .free-game-content {
+      /* background-color: blue; */
+      width: 100%;
+      padding: 20px;
+    }
+
+    .free-game-header {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .free-game-header .pic-opacity {
+      width: 70px;
+      height: 20px;
+      color: white;
+      font-size: 14px;
+      font-weight: bold;
+      display: inline-block;
+    }
+
+    .free-game-body {
+      margin-top: 25px;
+      display: flex;
+      justify-content: space-between;
+      /* background-color: lightblue; */
+      height: 400px;
+    }
+
+    .free-game-body .pic-opacity {
+      width: 20%;
+      height: 100%;
+      /* background-color: lightcoral; */
+    }
+
+    .free-game-btn {
+        width: 70px;
+        height: 30px;
+        /* border: 1px solid red; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    #section-footer {
+        width: 100%;
+        height: 800px;
+        /* background-color: pink; */
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+    }
+
+    p {
+        text-align:left;
+        margin-left: 10px;
+        height: 10px;
+    }
+
+    .footer-option {
+        border-right: 1px gray solid;
+        width: 34%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+
+    .option-info {
+        height: 100px;
+    }
+
+    .option-img {
+        height: 100px;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+
+    <!-- header -->
+    <div class="header-images">
+      <div class="pic-opacity">
+        <img src="https://cdn2.unrealengine.com/zh-cn-mega-sale-3up-ms-banner-asset-1920x1080-e856160e3f8f.jpg?resize=1&w=854&h=480&quality=medium" alt="">
+      </div>
+      <div class="pic-opacity">
+        <img src="https://cdn2.unrealengine.com/zh-cn-mega-sale-3up-ms-banner-asset-1920x1080-e856160e3f8f.jpg?resize=1&w=854&h=480&quality=medium" alt="">
+      </div>
+      <div class="pic-opacity">
+        <img src="https://cdn2.unrealengine.com/zh-cn-mega-sale-3up-ms-banner-asset-1920x1080-e856160e3f8f.jpg?resize=1&w=854&h=480&quality=medium" alt="">
+      </div>
+    </div>
+
+    <!-- body1 -->
+    <div class="body1">
+      <div class="body1-left pic-opacity">
+        <img src="https://cdn2.unrealengine.com/egs-cyberpunk2077-cdprojektred-s1-03-1920x1080-1920x1080-616e2730febf.jpg?resize=1&w=854&h=480&quality=medium" alt="">
+      </div>
+      <div class="body1-right">
+        <div class="pic-opacity">
+            <img src="https://cdn2.unrealengine.com/egs-cyberpunk2077-cdprojektred-s1-03-1920x1080-1920x1080-616e2730febf.jpg?resize=1&w=854&h=480&quality=medium" alt="">
+        </div>
+        <div class="pic-opacity">
+            <img src="https://cdn2.unrealengine.com/egs-cyberpunk2077-cdprojektred-s1-03-1920x1080-1920x1080-616e2730febf.jpg?resize=1&w=854&h=480&quality=medium" alt="">
+        </div>
+        <div class="pic-opacity">
+            <img src="https://cdn2.unrealengine.com/egs-cyberpunk2077-cdprojektred-s1-03-1920x1080-1920x1080-616e2730febf.jpg?resize=1&w=854&h=480&quality=medium" alt="">
+        </div>
+        <div class="pic-opacity">
+            <img src="https://cdn2.unrealengine.com/egs-cyberpunk2077-cdprojektred-s1-03-1920x1080-1920x1080-616e2730febf.jpg?resize=1&w=854&h=480&quality=medium" alt="">
+        </div>
+        <div class="pic-opacity">
+            <img src="https://cdn2.unrealengine.com/egs-cyberpunk2077-cdprojektred-s1-03-1920x1080-1920x1080-616e2730febf.jpg?resize=1&w=854&h=480&quality=medium" alt="">
+        </div>
+        <div class="pic-opacity">
+            <img src="https://cdn2.unrealengine.com/egs-cyberpunk2077-cdprojektred-s1-03-1920x1080-1920x1080-616e2730febf.jpg?resize=1&w=854&h=480&quality=medium" alt="">
+        </div>
+      </div>
+    </div>
+
+    <!-- 更多游戏推荐 -->
+    <div class="section-title">
+      <div class="text pic-opacity">
+        <h2 style="color: white;">更多游戏推荐 ></h2>
+      </div>
+      <div class="icons">
+        <div class="pic-opacity" style="color: white; border: 1px white solid;">&lt;</div>
+        <div class="pic-opacity" style="color: white; border: 1px white solid;">&gt;</div>
+      </div>
+    </div>
+
+    <div class="game-list">
+      <div class="pic-opacity">
+        <img src="https://cdn1.epicgames.com/offer/b0cd075465c44f87be3b505ac04a2e46/GTAV_CHARM_Epic_FirstParty_PortraitFOB_1200x1600_R02_1200x1600-a5528b33df876e64f5dee728830c80a3?resize=1&w=360&h=480&quality=medium" alt="">
+      </div>
+      <div class="pic-opacity">
+        <img src="https://cdn1.epicgames.com/offer/b0cd075465c44f87be3b505ac04a2e46/GTAV_CHARM_Epic_FirstParty_PortraitFOB_1200x1600_R02_1200x1600-a5528b33df876e64f5dee728830c80a3?resize=1&w=360&h=480&quality=medium" alt="">
+      </div>
+      <div class="pic-opacity">
+        <img src="https://cdn1.epicgames.com/offer/b0cd075465c44f87be3b505ac04a2e46/GTAV_CHARM_Epic_FirstParty_PortraitFOB_1200x1600_R02_1200x1600-a5528b33df876e64f5dee728830c80a3?resize=1&w=360&h=480&quality=medium" alt="">
+      </div>
+      <div class="pic-opacity">
+        <img src="https://cdn1.epicgames.com/offer/b0cd075465c44f87be3b505ac04a2e46/GTAV_CHARM_Epic_FirstParty_PortraitFOB_1200x1600_R02_1200x1600-a5528b33df876e64f5dee728830c80a3?resize=1&w=360&h=480&quality=medium" alt="">
+      </div>
+      <div class="pic-opacity">
+        <img src="https://cdn1.epicgames.com/offer/b0cd075465c44f87be3b505ac04a2e46/GTAV_CHARM_Epic_FirstParty_PortraitFOB_1200x1600_R02_1200x1600-a5528b33df876e64f5dee728830c80a3?resize=1&w=360&h=480&quality=medium" alt="">
+      </div>
+      <div class="pic-opacity">
+        <img src="https://cdn1.epicgames.com/offer/b0cd075465c44f87be3b505ac04a2e46/GTAV_CHARM_Epic_FirstParty_PortraitFOB_1200x1600_R02_1200x1600-a5528b33df876e64f5dee728830c80a3?resize=1&w=360&h=480&quality=medium" alt="">
+      </div>
+    </div>
+
+    <div class="header-images">
+      <div class="pic-opacity">
+        <img src="https://cdn2.unrealengine.com/egs-cyberpunk2077-cdprojektred-s1-03-1920x1080-1920x1080-616e2730febf.jpg?resize=1&w=854&h=480&quality=medium" alt="">
+      </div>
+      <div class="pic-opacity">
+        <img src="https://cdn2.unrealengine.com/egs-cyberpunk2077-cdprojektred-s1-03-1920x1080-1920x1080-616e2730febf.jpg?resize=1&w=854&h=480&quality=medium" alt="">
+      </div>
+      <div class="pic-opacity">
+        <img src="https://cdn2.unrealengine.com/egs-cyberpunk2077-cdprojektred-s1-03-1920x1080-1920x1080-616e2730febf.jpg?resize=1&w=854&h=480&quality=medium" alt="">
+      </div>
+    </div>
+    
+    <!-- 大特卖聚焦 -->
+    <div class="section-title">
+      <div class="text pic-opacity">
+        <h2 style="color: white;">大特卖聚焦 ></h2>
+      </div>
+      <div class="icons">
+        <div class="pic-opacity" style="color: white; border: 1px white solid;">&lt;</div>
+        <div class="pic-opacity" style="color: white; border: 1px white solid;">&gt;</div>
+      </div>
+    </div>
+
+    <div class="game-list">
+      <div class="pic-opacity">
+        <img src="https://cdn1.epicgames.com/offer/e97659b501af4e3981d5430dad170911/EGS_HogwartsLegacy_AvalancheSoftware_S2_1200x1600-bb9f789b6628ff2aa935f06f5e0f218a?resize=1&w=360&h=480&quality=medium" alt="">
+      </div>
+      <div class="pic-opacity">
+        <img src="https://cdn1.epicgames.com/offer/e97659b501af4e3981d5430dad170911/EGS_HogwartsLegacy_AvalancheSoftware_S2_1200x1600-bb9f789b6628ff2aa935f06f5e0f218a?resize=1&w=360&h=480&quality=medium" alt="">
+      </div>
+      <div class="pic-opacity">
+        <img src="https://cdn1.epicgames.com/offer/e97659b501af4e3981d5430dad170911/EGS_HogwartsLegacy_AvalancheSoftware_S2_1200x1600-bb9f789b6628ff2aa935f06f5e0f218a?resize=1&w=360&h=480&quality=medium" alt="">
+      </div>
+      <div class="pic-opacity">
+        <img src="https://cdn1.epicgames.com/offer/e97659b501af4e3981d5430dad170911/EGS_HogwartsLegacy_AvalancheSoftware_S2_1200x1600-bb9f789b6628ff2aa935f06f5e0f218a?resize=1&w=360&h=480&quality=medium" alt="">
+      </div>
+      <div class="pic-opacity">
+        <img src="https://cdn1.epicgames.com/offer/e97659b501af4e3981d5430dad170911/EGS_HogwartsLegacy_AvalancheSoftware_S2_1200x1600-bb9f789b6628ff2aa935f06f5e0f218a?resize=1&w=360&h=480&quality=medium" alt="">
+      </div>
+      <div class="pic-opacity">
+        <img src="https://cdn1.epicgames.com/offer/e97659b501af4e3981d5430dad170911/EGS_HogwartsLegacy_AvalancheSoftware_S2_1200x1600-bb9f789b6628ff2aa935f06f5e0f218a?resize=1&w=360&h=480&quality=medium" alt="">
+      </div>
+    </div>
+
+    <div class="header-images">
+      <div class="pic-opacity">
+        <img src="https://cdn2.unrealengine.com/zh-cn-egs-dotw-death-stranding-directors-cut-breaker-1920x1080-f6d127a53246.jpg?resize=1&w=854&h=480&quality=medium" alt="">
+      </div>
+      <div class="pic-opacity">
+        <img src="https://cdn2.unrealengine.com/zh-cn-egs-dotw-saturnalia-breaker-1920x1080-dee5a32c0c65.jpg?resize=1&w=854&h=480&quality=medium" alt="">
+      </div>
+      <div class="pic-opacity">
+        <img src="https://cdn2.unrealengine.com/egs-bloodstained-the-scarlet-engagement-breaker-1920x1080-f5afd3740f44.jpg?resize=1&w=854&h=480&quality=medium" alt="">
+      </div>
+    </div>
+
+    <!-- 免费游戏-查看更多 -->
+    <div class="free-game">
+      <div class="free-game-content">
+        <div class="free-game-header">
+          <div class="pic-opacity free-game-btn">免费游戏</div>
+          <div class="pic-opacity free-game-btn" style="border: 1px white solid; border-radius: 5px;">查看更多</div>
+        </div>
+        <div class="free-game-body">
+          <div class="pic-opacity">
+            <img src="https://cdn1.epicgames.com/offer/d5241c76f178492ea1540fce45616757/Day7tall_1200x1600-b64b7e087d5bc3b29085a390ea79a7e9?resize=1&w=360&h=480&quality=medium" alt="">
+          </div>
+          <div class="pic-opacity">
+            <img src="https://cdn1.epicgames.com/offer/d5241c76f178492ea1540fce45616757/TinyTinatall_1200x1600-356dd4965bde4c5dbd1000f9c97ac4b4?resize=1&w=360&h=480&quality=medium" alt="">
+          </div>
+          <div class="pic-opacity">
+            <img src="https://cdn1.epicgames.com/offer/d5241c76f178492ea1540fce45616757/egs-vault-carousel-mobile-thumbnail-1200x160011_1200x1600-d91e66eade3c5f1b438dcfa9e2de4011?resize=1&w=360&h=480&quality=medium" alt="">
+          </div>
+          <div class="pic-opacity">
+            <img src="https://cdn1.epicgames.com/offer/d5241c76f178492ea1540fce45616757/egs-vault-carousel-mobile-thumbnail-1200x160011_1200x1600-d91e66eade3c5f1b438dcfa9e2de4011?resize=1&w=360&h=480&quality=medium" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 最新推出精品游戏 -->
+    <div class="section-title">
+      <div class="text pic-opacity">
+        <h2 style="color: white;">最新推出精品游戏 ></h2>
+      </div>
+      <div class="icons">
+        <div class="pic-opacity" style="color: white; border: 1px white solid;">&lt;</div>
+        <div class="pic-opacity" style="color: white; border: 1px white solid;">&gt;</div>
+      </div>
+    </div>
+
+    <div class="game-list">
+      <div class="pic-opacity">
+        <img src="https://cdn1.epicgames.com/spt-assets/330dace5ffc74156987f91d454ac544b/project-w-1vp1b.jpg?resize=1&w=360&h=480&quality=medium" alt="">
+      </div>
+      <div class="pic-opacity">
+        <img src="https://cdn1.epicgames.com/spt-assets/330dace5ffc74156987f91d454ac544b/project-w-1vp1b.jpg?resize=1&w=360&h=480&quality=medium" alt="">
+      </div>
+      <div class="pic-opacity">
+        <img src="https://cdn1.epicgames.com/spt-assets/330dace5ffc74156987f91d454ac544b/project-w-1vp1b.jpg?resize=1&w=360&h=480&quality=medium" alt="">
+      </div>
+      <div class="pic-opacity">
+        <img src="https://cdn1.epicgames.com/spt-assets/330dace5ffc74156987f91d454ac544b/project-w-1vp1b.jpg?resize=1&w=360&h=480&quality=medium" alt="">
+      </div>
+      <div class="pic-opacity">
+        <img src="https://cdn1.epicgames.com/spt-assets/330dace5ffc74156987f91d454ac544b/project-w-1vp1b.jpg?resize=1&w=360&h=480&quality=medium" alt="">
+      </div>
+      <div class="pic-opacity">
+        <img src="https://cdn1.epicgames.com/spt-assets/330dace5ffc74156987f91d454ac544b/project-w-1vp1b.jpg?resize=1&w=360&h=480&quality=medium" alt="">
+      </div>
+    </div>
+
+    <div class="header-images">
+      <div class="pic-opacity">
+        <img src="https://cdn2.unrealengine.com/zh-cn-sgf-breaker-asset-1920x1080-6a0f47f2ee7c.jpg?resize=1&w=854&h=480&quality=medium" alt="">
+      </div>
+      <div class="pic-opacity">
+        <img src="https://cdn2.unrealengine.com/egs-farming-sim-25-plains-prairies-dlc-breaker-1920x1080-e62ac98e53ec.jpg?resize=1&w=854&h=480&quality=medium" alt="">
+      </div>
+      <div class="pic-opacity">
+        <img src="https://cdn2.unrealengine.com/egs-f1-25-standard-edition-breaker-1920x1080-5b4903614cff.jpg?resize=1&w=854&h=480&quality=medium" alt="">
+      </div>
+    </div>
+
+    <!-- 最畅销-最多游玩-最热门愿望清单游戏 -->
+    <div id="section-footer">
+        <div class="footer-option">
+            <h3 style="color: white;">最畅销 ></h3>
+            <div class="pic-opacity option-info">
+                <div class="option-img">
+                    <img src="https://cdn1.epicgames.com/offer/b0cd075465c44f87be3b505ac04a2e46/GTAV_CHARM_Epic_FirstParty_PortraitFOB_1200x1600_R02_1200x1600-a5528b33df876e64f5dee728830c80a3?resize=1&w=360&h=480&quality=medium" alt="图片未加载">
+                </div>
+                <div style="color: white;" class="option-info">
+                    <p>EA SPORTS FC 25 Standard Edition</p>
+                    <p>可以免费试玩</p>
+                    <p>JP ￥2940</p>
+                </div>
+            </div>
+            <div class="pic-opacity option-info">
+                <div class="option-img">
+                    <img src="https://cdn1.epicgames.com/offer/b0cd075465c44f87be3b505ac04a2e46/GTAV_CHARM_Epic_FirstParty_PortraitFOB_1200x1600_R02_1200x1600-a5528b33df876e64f5dee728830c80a3?resize=1&w=360&h=480&quality=medium" alt="图片未加载">
+                </div>
+                <div style="color: white;">
+                    <p>EA SPORTS FC 25 Standard Edition</p>
+                    <p>可以免费试玩</p>
+                    <p>JP ￥2940</p>
+                </div>
+            </div>
+            <div class="pic-opacity option-info">
+                <div class="option-img">
+                    <img src="https://cdn1.epicgames.com/offer/b0cd075465c44f87be3b505ac04a2e46/GTAV_CHARM_Epic_FirstParty_PortraitFOB_1200x1600_R02_1200x1600-a5528b33df876e64f5dee728830c80a3?resize=1&w=360&h=480&quality=medium" alt="图片未加载">
+                </div>
+                <div style="color: white;">
+                    <p>EA SPORTS FC 25 Standard Edition</p>
+                    <p>可以免费试玩</p>
+                    <p>JP ￥2940</p>
+                </div>
+            </div>
+            <div class="pic-opacity option-info">
+                <div class="option-img">
+                    <img src="https://cdn1.epicgames.com/offer/b0cd075465c44f87be3b505ac04a2e46/GTAV_CHARM_Epic_FirstParty_PortraitFOB_1200x1600_R02_1200x1600-a5528b33df876e64f5dee728830c80a3?resize=1&w=360&h=480&quality=medium" alt="图片未加载">
+                </div>
+                <div style="color: white;">
+                    <p>EA SPORTS FC 25 Standard Edition</p>
+                    <p>可以免费试玩</p>
+                    <p>JP ￥2940</p>
+                </div>
+            </div>
+            <div class="pic-opacity option-info">
+                <div class="option-img">
+                    <img src="https://cdn1.epicgames.com/offer/b0cd075465c44f87be3b505ac04a2e46/GTAV_CHARM_Epic_FirstParty_PortraitFOB_1200x1600_R02_1200x1600-a5528b33df876e64f5dee728830c80a3?resize=1&w=360&h=480&quality=medium" alt="图片未加载">
+                </div>
+                <div style="color: white;">
+                    <p>EA SPORTS FC 25 Standard Edition</p>
+                    <p>可以免费试玩</p>
+                    <p>JP ￥2940</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-option">
+            <h3 style="color: white;">最多游玩 ></h3>
+            <div class="pic-opacity option-info">
+                <div class="option-img">
+                    <img src="https://cdn1.epicgames.com/offer/b0cd075465c44f87be3b505ac04a2e46/GTAV_CHARM_Epic_FirstParty_PortraitFOB_1200x1600_R02_1200x1600-a5528b33df876e64f5dee728830c80a3?resize=1&w=360&h=480&quality=medium" alt="图片未加载">
+                </div>
+                <div style="color: white;" class="option-info">
+                    <p>EA SPORTS FC 25 Standard Edition</p>
+                    <p>可以免费试玩</p>
+                    <p>JP ￥2940</p>
+                </div>
+            </div>
+            <div class="pic-opacity option-info">
+                <div class="option-img">
+                    <img src="https://cdn1.epicgames.com/offer/b0cd075465c44f87be3b505ac04a2e46/GTAV_CHARM_Epic_FirstParty_PortraitFOB_1200x1600_R02_1200x1600-a5528b33df876e64f5dee728830c80a3?resize=1&w=360&h=480&quality=medium" alt="图片未加载">
+                </div>
+                <div style="color: white;">
+                    <p>EA SPORTS FC 25 Standard Edition</p>
+                    <p>可以免费试玩</p>
+                    <p>JP ￥2940</p>
+                </div>
+            </div>
+            <div class="pic-opacity option-info">
+                <div class="option-img">
+                    <img src="https://cdn1.epicgames.com/offer/b0cd075465c44f87be3b505ac04a2e46/GTAV_CHARM_Epic_FirstParty_PortraitFOB_1200x1600_R02_1200x1600-a5528b33df876e64f5dee728830c80a3?resize=1&w=360&h=480&quality=medium" alt="图片未加载">
+                </div>
+                <div style="color: white;">
+                    <p>EA SPORTS FC 25 Standard Edition</p>
+                    <p>可以免费试玩</p>
+                    <p>JP ￥2940</p>
+                </div>
+            </div>
+            <div class="pic-opacity option-info">
+                <div class="option-img">
+                    <img src="https://cdn1.epicgames.com/offer/b0cd075465c44f87be3b505ac04a2e46/GTAV_CHARM_Epic_FirstParty_PortraitFOB_1200x1600_R02_1200x1600-a5528b33df876e64f5dee728830c80a3?resize=1&w=360&h=480&quality=medium" alt="图片未加载">
+                </div>
+                <div style="color: white;">
+                    <p>EA SPORTS FC 25 Standard Edition</p>
+                    <p>可以免费试玩</p>
+                    <p>JP ￥2940</p>
+                </div>
+            </div>
+            <div class="pic-opacity option-info">
+                <div class="option-img">
+                    <img src="https://cdn1.epicgames.com/offer/b0cd075465c44f87be3b505ac04a2e46/GTAV_CHARM_Epic_FirstParty_PortraitFOB_1200x1600_R02_1200x1600-a5528b33df876e64f5dee728830c80a3?resize=1&w=360&h=480&quality=medium" alt="图片未加载">
+                </div>
+                <div style="color: white;">
+                    <p>EA SPORTS FC 25 Standard Edition</p>
+                    <p>可以免费试玩</p>
+                    <p>JP ￥2940</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-option">
+            <h3 style="color: white;">最热门愿望清单游戏 ></h3>
+            <div class="pic-opacity option-info">
+                <div class="option-img">
+                    <img src="https://cdn1.epicgames.com/offer/b0cd075465c44f87be3b505ac04a2e46/GTAV_CHARM_Epic_FirstParty_PortraitFOB_1200x1600_R02_1200x1600-a5528b33df876e64f5dee728830c80a3?resize=1&w=360&h=480&quality=medium" alt="图片未加载">
+                </div>
+                <div style="color: white;" class="option-info">
+                    <p>EA SPORTS FC 25 Standard Edition</p>
+                    <p>可以免费试玩</p>
+                    <p>JP ￥2940</p>
+                </div>
+            </div>
+            <div class="pic-opacity option-info">
+                <div class="option-img">
+                    <img src="https://cdn1.epicgames.com/offer/b0cd075465c44f87be3b505ac04a2e46/GTAV_CHARM_Epic_FirstParty_PortraitFOB_1200x1600_R02_1200x1600-a5528b33df876e64f5dee728830c80a3?resize=1&w=360&h=480&quality=medium" alt="图片未加载">
+                </div>
+                <div style="color: white;">
+                    <p>EA SPORTS FC 25 Standard Edition</p>
+                    <p>可以免费试玩</p>
+                    <p>JP ￥2940</p>
+                </div>
+            </div>
+            <div class="pic-opacity option-info">
+                <div class="option-img">
+                    <img src="https://cdn1.epicgames.com/offer/b0cd075465c44f87be3b505ac04a2e46/GTAV_CHARM_Epic_FirstParty_PortraitFOB_1200x1600_R02_1200x1600-a5528b33df876e64f5dee728830c80a3?resize=1&w=360&h=480&quality=medium" alt="图片未加载">
+                </div>
+                <div style="color: white;">
+                    <p>EA SPORTS FC 25 Standard Edition</p>
+                    <p>可以免费试玩</p>
+                    <p>JP ￥2940</p>
+                </div>
+            </div>
+            <div class="pic-opacity option-info">
+                <div class="option-img">
+                    <img src="https://cdn1.epicgames.com/offer/b0cd075465c44f87be3b505ac04a2e46/GTAV_CHARM_Epic_FirstParty_PortraitFOB_1200x1600_R02_1200x1600-a5528b33df876e64f5dee728830c80a3?resize=1&w=360&h=480&quality=medium" alt="图片未加载">
+                </div>
+                <div style="color: white;">
+                    <p>EA SPORTS FC 25 Standard Edition</p>
+                    <p>可以免费试玩</p>
+                    <p>JP ￥2940</p>
+                </div>
+            </div>
+            <div class="pic-opacity option-info">
+                <div class="option-img">
+                    <img src="https://cdn1.epicgames.com/offer/b0cd075465c44f87be3b505ac04a2e46/GTAV_CHARM_Epic_FirstParty_PortraitFOB_1200x1600_R02_1200x1600-a5528b33df876e64f5dee728830c80a3?resize=1&w=360&h=480&quality=medium" alt="图片未加载">
+                </div>
+                <div style="color: white;">
+                    <p>EA SPORTS FC 25 Standard Edition</p>
+                    <p>可以免费试玩</p>
+                    <p>JP ￥2940</p>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</body>
+</html>
