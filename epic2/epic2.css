@@ -1,0 +1,301 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    width: 1134.6px;
+    border: 1px solid black;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: black;
+    padding-top: 100px; 
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    height: 100px;
+    position: fixed;
+    top: 0; 
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1134.6px;
+    background-color: black;
+    z-index: 1000; 
+}
+
+.header input {
+    width: 230px;
+    height: 24px;
+    padding: 8px;
+    border: 1px solid black;
+    border-radius: 40px;
+    margin-left: 0;
+    flex-grow: 0;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    background-color: #333;
+    color: white;
+}
+
+.header input:hover {
+    filter: brightness(1.2);
+}
+
+.header span {
+    cursor: pointer;
+    margin-left: 15px;
+    color: #aaaaaa;
+}
+
+.header span:hover {
+    color: white;
+}
+
+.header input::placeholder {
+    color: #aaaaaa;
+}
+
+.main-title {
+    color: white;
+    font-size: 40px;
+    text-align: left;
+    margin-top: 20px;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.sub-menu {
+    color: white;
+    margin-top: 10px; 
+}
+
+.sub-menu span {
+    font-size: 16px;
+    display: inline-block;
+    height: 40px;
+    margin: 0 0 20px;
+    padding: 0 0 8px;
+    margin-right: 20px; 
+    cursor: pointer; 
+    color: #aaaaaa;
+    border-bottom: 2px solid transparent; 
+    transition: border-color 0.3s, color 0.3s; 
+    box-sizing: border-box; 
+}
+
+.sub-menu span:hover {
+    color: white;
+}
+
+.sub-menu span.active {
+    border-bottom: 2px solid red; 
+    color: white;
+}
+
+.content {
+    width: 100%;
+    height: 255px;
+    box-sizing: border-box;
+}
+
+.achievement-info {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    background-color: #333;
+    border: 1px solid black; 
+}
+
+.achievement-info img {
+    width: 40%;
+    height: 100%;
+    object-fit: cover; 
+}
+
+.text-info {
+    display: flex;
+    width: 60%; 
+    height: 100%;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+    width: 50%; 
+    height: 100%;
+    padding: 0 10px; 
+    box-sizing: border-box;
+}
+
+.top-text {
+    color: #aaaaaa;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.bottom-text {
+    color: white;
+    font-size: 24px;
+}
+
+.achievement-title {
+    color: white;
+    font-size: 20px;
+    margin-top: 20px;
+    display: inline-flex; 
+    align-items: center; 
+    gap: 10px; 
+    line-height: 1; 
+}
+
+.info-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: white;
+    color: black;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    position: relative; 
+    cursor: pointer; 
+}
+
+.info-icon[data-tooltip]::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: calc(100% + 16px);
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #aaaaaa;
+    padding: 8px;
+    border-radius: 4px;
+    font-size: 14px; 
+    width: 350px;
+    white-space: pre-wrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+    z-index: 1;
+}
+
+.info-icon[data-tooltip]::after {
+    content: "";
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid #333;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+    z-index: 1;
+}
+
+.info-icon[data-tooltip]:hover::before,
+.info-icon[data-tooltip]:hover::after {
+    opacity: 1;
+    visibility: visible;
+}
+
+.sort-container {
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
+}
+
+.sort-label {
+    color: #aaaaaa;
+    font-size: 14px; 
+    line-height: 1; 
+}
+
+#sort-select {
+    width: 150px; 
+    height: 30px;
+    padding: 1px 5px 0 5px; 
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 14px;
+    line-height: 1;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="6"><path fill="white" d="M0 0l5 6 5-6z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 5px center;
+}
+
+#sort-select option {
+    background-color: #333; 
+    color: white; 
+}
+
+#achievements {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.achievement-item {
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
+    height: 140.8px;
+    margin-bottom: 20px;
+    background-color: black;
+    border-bottom: 1px solid #333;
+}
+
+.achievement-img {
+    width: 100px; 
+    height: 100px; 
+    object-fit: cover; 
+}
+
+.achievement-details {
+    flex-grow: 1;
+    color: white;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 20px;
+    margin-top: -5px;
+}
+
+.achievement-name {
+    font-size: 16px; 
+    color: white; 
+}
+
+.achievement-description {
+    font-size: 16px;
+    color: #aaaaaa;
+    padding: 0; 
+    margin: 0; 
+}
+
+.achievement-stats {
+    display: flex;
+    gap: 5px;
+}
+
+.achievement-exp,
+.achievement-unlock-rate {
+    font-size: 16px; 
+    color: #aaaaaa; 
+}
