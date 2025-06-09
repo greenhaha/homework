@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <title>GTA V</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      /* background-color: #18181c; */
+      background-color: black;
+      color: white;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 40px auto;
+    }
+
+    h1 {
+      font-size: 36px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .tab {
+      cursor: pointer;
+      color: #aaa;
+      position: relative;
+      font-size: 16px;
+    }
+
+    .tab.active {
+      color: white;
+    }
+
+    .tab.active::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background-color: green;
+    }
+
+    .content-box {
+      display: flex;
+      background-color: #121214;
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+    .game-cover {
+      width: 50%;
+      padding-right: 20px;
+    }
+
+    .game-cover img {
+      width: 100%;
+      border-radius: 4px;
+    }
+
+    .game-info {
+      flex: 1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .info-item {
+      font-size: 16px;
+    }
+
+    .info-label {
+      color: #aaa;
+      margin-bottom: 5px;
+    }
+
+    .info-value {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    select {
+      padding: 8px 12px;
+      font-size: 14px;
+      margin-bottom: 20px;
+      background-color: #2a2a2e;
+      color: white;
+      border: none;
+      border-radius: 4px;
+    }
+
+    .achievement {
+      /* background-color: #121214; */
+      margin-bottom: 10px;
+      padding: 12px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px grey solid;
+    }
+
+    .achievement img {
+      width: 60px;
+      height: 60px;
+      margin-right: 20px;
+      border-radius: 4px;
+    }
+
+    .achievement-info {
+      /* 是flex-grow flex-shrink flex-basis的简写形式
+      * flex-grow:1; -> 允许元素在容器中占据可用空间
+      * flex-shrink:1; -> 允许元素在容器空间不足时缩小
+      * flex-basis:1; -> 设计元素的初始主尺寸为0，意味着它将根据flex-grow的值来分配空间
+      */
+      flex: 1;
+    }
+
+    .achievement-title {
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .achievement-desc {
+      font-size: 14px;
+      color: #ccc;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Grand Theft Auto V Enhanced</h1>
+
+    <div class="tabs">
+      <div class="tab">总览</div>
+      <div class="tab active">成就系统</div>
+    </div>
+
+    <div class="content-box">
+      <div class="game-cover">
+        <img src="https://cdn1.epicgames.com/offer/b0cd075465c44f87be3b505ac04a2e46/EGS_GrandTheftAutoVEnhanced_RockstarNorth_S1_2560x1440-906d8ae76a91aafc60b1a54c23fab496" alt="GTA V Enhanced">
+      </div>
+      <div class="game-info">
+        <div class="info-item">
+          <div class="info-label">可用成就</div>
+          <div class="info-value">77 项成就</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">可用经验值</div>
+          <div class="info-value">1750 经验值</div>
+        </div>
+      </div>
+    </div>
+    <div id="achievementSystem"></div>
+  
+   <!-- for属性 与下面select中的id绑定 用于用户点击label标签时 将焦点放到select上 -->
+  <label for="sortSelect">排序方式：</label>
+  <select id="sortSelect">
+    <option value="name">按名称</option>
+    <option value="rarity">按稀有度（低到高）</option>
+    <option value="tallToShort">按稀有度（高到低）</option>
+    <option value="experienceDesc">按经验值（从高到低）</option>
+    <option value="experienceAsc">按经验值（从低到高）</option>
+   </select>
+
+  <div id="achievement-list"></div>
+</div>
+</body>
+<script>
+    const achievements = [
+      {
+        title: "冷酷无情",
+        desc: "在线模式中杀死至少 10 名敌人...",
+        rarity: 30,
+        experience: 20,
+        img: "https://shared-static-prod.epicgames.com/epic-achievements/25e088b16a154dfbbe74d2510bdef015/b0cd075465c44f87be3b505ac04a2e46/icons/51df86609336a63c9d4e7d661c8bb594"
+      },
+      {
+        title: "警察追逐者",
+        desc: "完成任务达到3星通缉...",
+        rarity: 10,
+        experience: 30,
+        img: "https://shared-static-prod.epicgames.com/epic-achievements/25e088b16a154dfbbe74d2510bdef015/b0cd075465c44f87be3b505ac04a2e46/icons/2f96ad1b947e63fcda27e31071a067fc"
+      },
+      {
+        title: "飙车王者",
+        desc: "在比赛中胜利10次...",
+        rarity: 70,
+        experience: 100,
+        img: "https://shared-static-prod.epicgames.com/epic-achievements/25e088b16a154dfbbe74d2510bdef015/b0cd075465c44f87be3b505ac04a2e46/icons/395172785f41b6d38cd8cd8036036d42"
+      }
+    ];
+    
+    // 获取节点
+    const list = document.getElementById("achievement-list");
+    const sortSelect = document.getElementById("sortSelect");
+    const achieve = document.getElementById("achievementSystem");
+
+    function renderAchievements(data) {
+      // 每次点击排序时 清空div中的所有内容 防止不断向div中添加子元素
+      list.innerHTML = "";
+      data.forEach(item => {
+        const div = document.createElement("div");
+        div.className = "achievement";
+        div.innerHTML = `
+          <img src="${item.img}" alt="图片加载中...">
+          <div class="achievement-info">
+            <div class="achievement-title">${item.title}</div>
+            <div class="achievement-desc">${item.desc}</div>
+            <div class="achievement-desc">${item.experience}经验值 | 稀有度: ${item.rarity}%</div>
+          </div>
+        `;
+        list.appendChild(div);
+      });
+    }
+
+    // 成就系统h2标签
+    function countAchievements(data) {
+        const h2 = document.createElement("h2");
+        h2.innerHTML = `成就系统(${data.length})`;
+        achieve.appendChild(h2);
+    }
+
+    // 监听器 当下拉框发生变化时 进行下面逻辑处理
+    sortSelect.addEventListener("change", () => {
+        // 可以通过获取select节点来获取其中option的value属性
+        const sortType = sortSelect.value;
+        if (sortType === "name") {
+        /*localeCompare 字符串的本地化比较方法，能正确处理中英文等各种语言的排序顺序*/
+        achievements.sort((a, b) => a.title.localeCompare(b.title));
+        } else if (sortType === "rarity") {
+        /*由低到高进行排序*/
+        achievements.sort((a, b) => a.rarity - b.rarity);
+        } else if(sortType === "tallToShort") {
+        /*由高到低进行排序*/
+        achievements.sort((a, b) => b.rarity - a.rarity);
+        }else if (sortType === "experienceDesc") {
+        // 从高到低进行排序
+        achievements.sort((a, b) => b.experience - a.experience);
+        }else if (sortType === "experienceAsc") {
+        // 从低到高进行排序
+        achievements.sort((a, b) => a.experience - b.experience);
+        }
+        renderAchievements(achievements);
+    });
+
+    // 初始化
+    renderAchievements(achievements);
+    countAchievements(achievements);
+</script>
+</html>
