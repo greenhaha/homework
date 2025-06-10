@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>游戏排序页面</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: white;
+            background-color: #282829;
+        }
+
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background-color: #333;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            /* 两端对齐 */
+            padding: 0 20px;
+            z-index: 1000;
+        }
+
+        .top-bar h1 {
+            font-size: 24px;
+            font-weight: 500;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+            /* 按钮之间的间距 */
+        }
+
+        .nav-button {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            /* 圆角 */
+            background-color: #4383ad;
+            /* 深灰色背景 */
+            color: white;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-button:hover {
+            background-color: #abb5ee;
+            /* 更亮的灰色 */
+            transform: translateY(-2px);
+            /* 轻微上浮效果 */
+        }
+
+        .nav-button:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
+            /* 白色光晕效果 */
+        }
+
+        .main-content {
+            margin-top: 80px;
+            padding: 30px 10%;
+            background-color: #282829;
+        }
+
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto 40px;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-size: 16px;
+            outline: none;
+            background-color: rgb(59, 57, 57);
+            border-radius: 15px;
+            border: none;
+        }
+
+        .search-box:focus {
+            border-color: #007bff;
+        }
+
+        .search-box::placeholder {
+            color: #666;
+        }
+
+        .game-button {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 20px;
+            background-color: #282829;
+            color: white;
+        }
+
+        .tabs {
+            display: flex;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            background: none;
+            outline: none;
+            font-size: 16px;
+            color: white;
+        }
+
+        .tab.active {
+            border-bottom: 2px solid #409EFF;
+            color: #409EFF;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 20px 0px;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .achievement-container {
+            display: flex;
+            flex-direction: row;
+            gap: 0px;
+        }
+
+        .achievement-image {
+            width: 45%;
+            height: 400px;
+        }
+
+        .achievement-info {
+            display: flex;
+            flex-direction: row;
+            gap: 0px;
+            width: 55%;
+            height: 400px;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #41404080;
+            padding-right: 20%;
+        }
+
+        .achievement-info-item {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding-left: 50px;
+        }
+
+        .achievement-button {
+            border: none;
+            border-radius: 50%;
+            background-color: #282829;
+            color: rgb(44, 42, 42);
+            font-size: 15px;
+            background-color: rgb(255, 255, 255);
+            width: 24px;
+            height: 24px;
+            text-align: center;
+        }
+
+        .tooltip-container {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            margin-top: 3px;
+            margin-left: 3px;
+        }
+
+        .tooltip-text {
+            visibility: hidden;
+            background-color: #333;
+            color: #fff;
+            text-align: left;
+            border-radius: 4px;
+            padding: 2px 4px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            /* 显示在上方 */
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.2s;
+            white-space: normal;
+            width: 300px;
+            height: 200px;
+            font-size: 14px;
+        }
+
+        .tooltip-container.show .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .card-container {
+            display: flex;
+            flex-direction: column;
+            margin-top: 50px;
+        }
+
+        .card-content {
+            display: flex;
+            flex-direction: column;
+            padding-left: 5%;
+            align-items: left;
+            text-align: left;
+            width: 30%;
+            margin-top: 30px;
+        }
+
+        .card {
+            display:flex ;
+        }
+
+        .card-box{
+            display: grid;
+            grid-template-columns: 0fr 1fr;
+            grid-template-rows: auto auto;
+            width: 100%;
+            margin: 20px auto;
+        }
+
+        .card-img {
+            width: 150px;
+            height: 150px;
+        }
+
+        .card-p1 {
+            font-size: 24px;
+        }
+
+        .card-p2 {
+            font-size: 16px;
+            color: #a7a7a7;
+        }
+
+        .option-sorted {
+            background-color: #333;
+            color: white;
+        }
+
+        #my-select {
+            background-color: transparent;
+            color: #ffffff;
+        }
+
+        hr {
+            grid-column: span 2;
+            border: none;
+            height: 2px;
+            background-color: #666;
+            margin-top: 15px;
+            width: 80%;
+        }
+    </style>
+
+<body>
+    <div class="top-bar">
+        <h1>游戏排序页面</h1>
+        <div class="nav-buttons">
+            <button class="nav-button">登录</button>
+            <button class="nav-button">注册</button>
+        </div>
+    </div>
+    <main class="main-content">
+        <div class="search-container" style="display: flex; align-items: center; margin: 20px 0;">
+            <span style="display: flex; align-items: center; gap: 10px;">
+                <input type="text" class="search-box" placeholder="搜索游戏..." style="width: 300px;">
+                <button class="nav-button">探索</button>
+                <button class="nav-button">浏览</button>
+                <button class="nav-button">新闻</button>
+            </span>
+        </div>
+
+        <h2 style="font-size: 50px; font-weight: 500; margin-bottom: 20px;"><b>Japanese Drift Master</b></h2>
+
+        <div class="game-container">
+            <div class="game-image">
+                <div class="tabs">
+                    <button class="tab" data-target="tab1">总览</button>
+                    <button class="tab active" data-target="tab2">成就系统</button>
+                </div>
+                <div id="tab1" class="tab-content">
+                    总览内容
+                </div>
+                <div id="tab2" class="tab-content active">
+                    <div class="achievement-container">
+                        <div class="achievement-image">
+                            <img src="https://cdn1.epicgames.com/spt-assets/d27a2e7b36704160ab7b66cb4d82f839/japanese-drift-master-ec4yi.jpg"
+                                alt="游戏宣传图片" style="width: 100%; height: 100%;">
+                        </div>
+                        <div class="achievement-info">
+                            <div class="achievement-info-item">
+                                <p style="font-size: 20px; font-weight: 500;">可用成就</p>
+                                <p style="font-size: 35px; font-weight: 500;"><b>26项成就</b></p>
+                            </div>
+                            <div class="achievement-info-item">
+                                <p style="font-size: 20px; font-weight: 500;">可用经验值</p>
+                                <p style="font-size: 35px; font-weight: 500;"><b>1000经验值 </b></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="achievement-container" style="gap: 10px; margin-top: 20px;">
+                        <h3 style="font-size: 20px; font-weight: 500;"><b>成就系统(8)</b></h3>
+                        <div class="tooltip-container" id="tooltipBtn">
+                            <p class="achievement-button"><b>i</b></p>
+                            <div class="tooltip-text">
+                                <p>根据经验值不同，成就分为四个不同级别。在游戏中赢得 1000 点经验，就能获得 Epic 的白金成就。</p>
+                                <p>青铜级 = 5 - 45 点经验值</p>
+                                <p>白银级 = 50 - 95 点经验值</p>
+                                <p>黄金级 = 100 - 200 经验值</p>
+                                <p>白金级 = 250 经验值</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dropdown" style="margin-top: 20px;">
+                        <label for="my-select" style="font-size: 15px; color: #d4d4d4;">排序方式:</label>
+                        <select id="my-select">
+                            <option class="option-sorted" value="name" selected>按字母排序</option>
+                            <option class="option-sorted" value="rarity">稀有度</option>
+                            <option class="option-sorted" value="progress-desc">进度:由高到低</option>
+                            <option class="option-sorted" value="progress-desc">进度:由低到高</option>
+                            <option class="option-sorted" value="exp-desc">经验值:由高到低</option>
+                            <option class="option-sorted" value="exp-asc">经验值:由低到高</option>
+                        </select>
+                        <div class="card-all" style="width: 80%">
+                            <div class="card-container" id="card-container">
+                                <!-- <img class="card-img" 
+                                src="https://shared-static-prod.epicgames.com/epic-achievements/d27a2e7b36704160ab7b66cb4d82f839/33b49c223bc548b99c30266a8aae1eb9/icons/7498095c8ed3e559e9d707b0ad9b1d67" 
+                                alt="成就">
+                                <div class="card-content">
+                                    <p class="card-p1"><b>Anther one</b></p>
+                                    <p class="card-p2">Buy a new car</p>
+                                    <p class="card-p2">20  经验值 | 32% 的玩家解锁</p>
+                                </div>
+                                <hr/> -->
+                            </div>
+                           
+
+                        </div>
+                    </div>
+    </main>
+    <footer>
+        <p>&copy; 2025 游戏网站. 保留所有权利。</p>
+    </footer>
+    <script>
+        // 标签页 ->tabs
+        const tabs = document.querySelectorAll('.tab');
+        const contents = document.querySelectorAll('.tab-content');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // 去掉所有 tab 的激活状态
+                tabs.forEach(t => t.classList.remove('active'));
+                contents.forEach(c => c.classList.remove('active'));
+
+                // 激活当前 tab 和对应内容
+                tab.classList.add('active');
+                const targetId = tab.getAttribute('data-target');
+                document.getElementById(targetId).classList.add('active');
+            });
+        });
+
+        // 文字提示 ->tooltip
+        const tooltip = document.getElementById('tooltipBtn');
+
+        // 鼠标移入显示 tooltip
+        tooltip.addEventListener('mouseenter', () => {
+            tooltip.classList.add('show');
+        });
+
+        // 鼠标移出隐藏 tooltip
+        tooltip.addEventListener('mouseleave', () => {
+            tooltip.classList.remove('show');
+        });
+
+        // 排序
+        const items = [
+            { name: "Another one", rarity: 33, progress: 8, exp: 20, describtion: "Buy a new car" ,
+                image:'https://shared-static-prod.epicgames.com/epic-achievements/d27a2e7b36704160ab7b66cb4d82f839/33b49c223bc548b99c30266a8aae1eb9/icons/7498095c8ed3e559e9d707b0ad9b1d67'
+            },
+            { name: "Catch the Rainbow", rarity: 39, progress: 7, exp: 40, describtion: "Continuously Drift for 20 seconds without crashing in the rain" ,
+                image: 'https://shared-static-prod.epicgames.com/epic-achievements/d27a2e7b36704160ab7b66cb4d82f839/33b49c223bc548b99c30266a8aae1eb9/icons/4218a10b584d57023a857c67395c9e41'
+            },
+            { name: "Collector", rarity: 8, progress: 6, exp: 40, describtion: "Get 5 cars" ,
+                image:'https://shared-static-prod.epicgames.com/epic-achievements/d27a2e7b36704160ab7b66cb4d82f839/33b49c223bc548b99c30266a8aae1eb9/icons/52297b1609eb0c182976f2b493a6eb70'
+            },
+            { name: "Did you ever drive straight?", rarity: 41, progress: 5, exp: 40, describtion: "Drift for 20 kilometers" ,
+                image: 'https://shared-static-prod.epicgames.com/epic-achievements/d27a2e7b36704160ab7b66cb4d82f839/33b49c223bc548b99c30266a8aae1eb9/icons/d5354ae10da1d716986052c54ca773e5'
+            },
+            { name: "Dojin", rarity: 0.2, progress: 4, exp: 40, describtion: "Drive 1500 kilometers.Drive 1500 kilometers" ,
+                image: 'https://shared-static-prod.epicgames.com/epic-achievements/d27a2e7b36704160ab7b66cb4d82f839/33b49c223bc548b99c30266a8aae1eb9/icons/6c3c1a76192153579dca3f41b11ca753'
+            },
+            { name: "Dreams come true", rarity: 59, progress: 3, exp: 20, describtion: "Earn a total of 150.000 drift points" ,
+                image: 'https://shared-static-prod.epicgames.com/epic-achievements/d27a2e7b36704160ab7b66cb4d82f839/33b49c223bc548b99c30266a8aae1eb9/icons/1559bf8faf2df62241830ff5bbe24f86'
+            },
+            { name: "Drift Lover", rarity: 53, progress: 2, exp: 40, describtion: "Drift for 10 kilometers" ,
+                image: 'https://shared-static-prod.epicgames.com/epic-achievements/d27a2e7b36704160ab7b66cb4d82f839/33b49c223bc548b99c30266a8aae1eb9/icons/00213ac595baf11717cb0f063fee5fda'
+            },
+            { name: "Fast as lightning", rarity: 86, progress: 1, exp: 40, describtion: "Reach a speed of 225 km/h" ,
+                image: 'https://shared-static-prod.epicgames.com/epic-achievements/d27a2e7b36704160ab7b66cb4d82f839/33b49c223bc548b99c30266a8aae1eb9/icons/39af7aa43940db5e6c46fad8728cbe1e'
+            },
+        ];
+
+        const select = document.getElementById("my-select");
+        const container = document.getElementById("card-container");
+        function renderCards(data) {
+            container.innerHTML = ""; // 清空旧内容
+
+            data.forEach(item => {
+                const card = document.createElement("div");
+                card.className = "card";
+
+                card.innerHTML = `
+                <div class='card-box'>
+                    <img class="card-img" 
+                    src=${item.image} 
+                    alt="成就">
+                    <div class="card-content">
+                        <p class="card-p1"><b>${item.name}</b></p>
+                        <p class="card-p2">${item.describtion}</p>
+                        <p class="card-p2">${item.exp}  经验值 | ${item.progress}% 的玩家解锁</p>
+                    </div>
+                    <hr/>
+                </div>
+                `;
+
+                container.appendChild(card);
+            });
+        }
+        function sortItems(key) {
+            const sorted = [...items]; // 拷贝一份
+            switch (key) {
+                case "name":
+                    sorted.sort((a, b) => a.name.localeCompare(b.name));
+                    break;
+                case "rarity":
+                    sorted.sort((a, b) => b.rarity - a.rarity);
+                    break;
+                case "progress-desc":
+                    sorted.sort((a, b) => b.progress - a.progress);
+                    break;
+                case "progress-asc":
+                    sorted.sort((a, b) => a.progress - b.progress);
+                    break;
+                case "exp-desc":
+                    sorted.sort((a, b) => b.exp - a.exp);
+                    break;
+                case "exp-asc":
+                    sorted.sort((a, b) => a.exp - b.exp);
+                    break;
+            }
+            renderCards(sorted);
+        }
+
+        select.addEventListener("change", () => {
+            sortItems(select.value);
+        });
+
+        // 初始渲染
+        sortItems(select.value);
+
+    </script>
+</body>
+
+</html>
