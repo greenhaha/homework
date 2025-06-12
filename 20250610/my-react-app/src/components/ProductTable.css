@@ -1,0 +1,65 @@
+.table-container {
+  padding: 20px;
+  max-width: 1200px;
+  width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.table-title {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 20px;
+  font-weight: normal;
+}
+
+.filter-container {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  flex-shrink: 0;
+}
+
+.filter-input,
+.filter-select {
+  padding: 6px 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.filter-input:focus,
+.filter-select:focus {
+  outline: none;
+  border-color: #24c6db9e;
+}
+
+.price-input {
+  width: 100px;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  flex: 1;
+  overflow: hidden;
+}
+
+.data-table th,
+.data-table td {
+  padding: 8px 12px;
+  text-align: left;
+  border: 1px solid #dddddd;
+}
+
+.data-table th {
+  font-weight: normal;
+  background-color: #fafafa;
+}
+
+.data-table tr:hover {
+  background-color: #24c6db9e;
+} 
