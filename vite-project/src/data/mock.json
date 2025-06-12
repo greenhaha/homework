@@ -1,0 +1,30 @@
+[
+  {
+    "id": "PROD001",
+    "name": "智能手机 S25",
+    "category": "电子产品",
+    "status": "已完成",
+    "price": 7999.00
+  },
+  {
+    "id": "PROD002",
+    "name": "高定西装",
+    "category": "服装",
+    "status": "待发货",
+    "price": 2500.00
+  },
+  {
+    "id": "PROD003",
+    "name": "React权威指南",
+    "category": "书籍",
+    "status": "已取消",
+    "price": 128.50
+  },
+  {
+    "id": "PROD004",
+    "name": "无线蓝牙耳机 Pro",
+    "category": "电子产品",
+    "status": "已完成",
+    "price": 999.00
+  }
+]
