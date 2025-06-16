@@ -4,7 +4,6 @@ import { useState } from "react";
 
 interface Props {
 	onFilter: (keyword: string) => void;
-	zhangqinghua: string;
 }
 
 export function OrderFilter({ onFilter }: Props) {
@@ -13,7 +12,7 @@ export function OrderFilter({ onFilter }: Props) {
 	return (
 		<HStack mb={4}>
 			<Input
-				placeholder="请输入产品名称"
+				placeholder="请输入产品名称或订单状态"
 				value={input}
 				onChange={(e) => setInput(e.target.value)}
 			/>
