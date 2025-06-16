@@ -5,9 +5,13 @@ interface Order {
 	id: number;
 	productName: string;
 	quantity: number;
+	orderStatus: number;
 }
-
-export function OrderList({ orders }: { orders: Order[] }) {
+interface OrderListProps {
+    orders: Order[];
+    statusMap: { [key: number]: string };
+}
+export function OrderList({orders, statusMap}: OrderListProps) {
 	return (
 		<Table.Root variant="simple">
 			<Table.Header>
@@ -15,6 +19,7 @@ export function OrderList({ orders }: { orders: Order[] }) {
 					<Table.ColumnHeader>订单ID</Table.ColumnHeader>
 					<Table.ColumnHeader>产品名称</Table.ColumnHeader>
 					<Table.ColumnHeader>数量</Table.ColumnHeader>
+					<Table.ColumnHeader>订单状态</Table.ColumnHeader>
 				</Table.Row>
 			</Table.Header>
 			<Table.Body>
@@ -23,6 +28,7 @@ export function OrderList({ orders }: { orders: Order[] }) {
 						<Table.Cell>{order.id}</Table.Cell>
 						<Table.Cell>{order.productName}</Table.Cell>
 						<Table.Cell>{order.quantity}</Table.Cell>
+						<Table.Cell>{statusMap[order.orderStatus] ?? order.orderStatus}</Table.Cell>
 					</Table.Row>
 				))}
 			</Table.Body>
