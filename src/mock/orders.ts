@@ -1,3 +1,4 @@
+// import { Order } from './../../node_modules/csstype/index.d';
 // src/mock/orders.ts
 export const mockOrders = [
 	{ id: 1, productName: "iPhone 15", quantity: 2, orderStatus: 0 },
