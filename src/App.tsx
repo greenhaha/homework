@@ -6,7 +6,7 @@ import { OrderFilter } from "./components/OrderFilter";
 import { OrderList } from "./components/OrderList";
 
 function App() {
-	const [orders, setOrders] = useState(mockOrders);
+	const [orders] = useState(mockOrders);
 	const [filtered, setFiltered] = useState(mockOrders);
 
 	useEffect(() => {
@@ -14,11 +14,25 @@ function App() {
 		setFiltered(mockOrders);
 	}, []);
 
-	const handleFilter = (keyword: string) => {
+	const handleFilter = (keyword: string, status: string) => {
 		const kw = keyword.trim().toLowerCase();
-		const filtered = orders.filter((o) =>
-			o.productName.toLowerCase().includes(kw),
-		);
+		const sta = status.trim().toLowerCase();
+		let filtered = [];
+		if (sta === undefined || sta === "") {
+			filtered = orders.filter((o) =>
+				o.productName.toLowerCase().includes(kw),
+			);
+		} else if (sta === "none") {
+			filtered = orders.filter((o) =>
+				o.productName.toLowerCase().includes(kw) &&
+				o.orderStatus === undefined,
+			);
+		} else {
+			filtered = orders.filter((o) =>
+				o.productName.toLowerCase().includes(kw) &&
+				o.orderStatus === Number(sta),
+			);
+		}
 		setFiltered(filtered);
 	};
 
