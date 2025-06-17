@@ -1,0 +1,23 @@
+.order-status-select {
+    display: flex;
+    height: 30px;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    min-height: var(--select-trigger-height);
+    --input-height: var(--select-trigger-height);
+    padding-inline: var(--select-trigger-padding-x);
+    border-radius: var(--chakra-radii-l2);
+    user-select: none;
+    text-align: start;
+    --focus-ring-color: var(--chakra-colors-color-palette-focus-ring);
+    font-size: var(--chakra-font-sizes-sm);
+    line-height: 1.25rem;
+    gap: var(--chakra-spacing-2);
+    background: var(--chakra-colors-transparent);
+    --bg-currentcolor: var(--chakra-colors-transparent);
+    border-width: 1px;
+    border-color: var(--chakra-colors-border);
+    margin-bottom: 16px;
+}
