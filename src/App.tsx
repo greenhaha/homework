@@ -6,29 +6,32 @@ import { OrderFilter } from "./components/OrderFilter";
 import { OrderList } from "./components/OrderList";
 
 function App() {
-	const [orders, setOrders] = useState(mockOrders);
-	const [filtered, setFiltered] = useState(mockOrders);
+  const [orders] = useState(mockOrders);
+  const [filtered, setFiltered] = useState<typeof mockOrders>([]);
 
-	useEffect(() => {
-		// 模拟加载
-		setFiltered(mockOrders);
-	}, []);
+  useEffect(() => {
+    // 模拟加载
+    setFiltered([]);
+  }, []);
 
-	const handleFilter = (keyword: string) => {
-		const kw = keyword.trim().toLowerCase();
-		const filtered = orders.filter((o) =>
-			o.productName.toLowerCase().includes(kw),
-		);
-		setFiltered(filtered);
-	};
+  const handleFilter = (input: string, orderStatus: number) => {
+    const product_name = input.trim().toLowerCase();
+    const order_status = orderStatus;
+    const filtered = orders.filter(
+      (o) =>
+        (!product_name || o.productName.toLowerCase().includes(product_name)) &&
+        (order_status === -1 || o.orderStatus === order_status)
+    );
+    setFiltered(filtered);
+  };
 
-	return (
-		<Container maxW="container.md" py={6}>
-			<Heading mb={4}>产品订单页面</Heading>
-			<OrderFilter onFilter={handleFilter} />
-			<OrderList orders={filtered} />
-		</Container>
-	);
+  return (
+    <Container maxW="container.md" py={6}>
+      <Heading mb={4}>产品订单页面</Heading>
+      <OrderFilter onFilter={handleFilter} />
+      <OrderList orders={filtered} />
+    </Container>
+  );
 }
 
 export default App;

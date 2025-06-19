@@ -23,11 +23,11 @@ a:hover {
 }
 
 body {
-  margin: 0;
+  margin: auto;
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  place-items: top;
+  justify-content: center;
+  inline-size: 1500px;
 }
 
 h1 {
@@ -35,23 +35,81 @@ h1 {
   line-height: 1.1;
 }
 
+/* 美化筛选区域容器 */
+.order-filter-box {
+  background: #73cbe6;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(60, 60, 60, 0.08);
+  padding: 24px 32px;
+  margin-block-end: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 美化输入框 */
+.input_box1 {
+  background: #f5f7fa;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 16px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  margin-inline-end: 16px;
+}
+.input_box1:focus {
+  border-color: #3182ce;
+  box-shadow: 0 0 0 2px #90cdf4;
+  outline: none;
+}
+
+/* 美化下拉框 */
+select {
+  background: #f5f7fa;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 16px;
+  margin-inline-end: 16px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+select:focus {
+  border-color: #3182ce;
+  box-shadow: 0 0 0 2px #90cdf4;
+  outline: none;
+}
+
+/* 美化筛选按钮 */
 button {
   border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
+  border: none;
+  padding: 0.6em 1.8em;
   font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+  font-weight: 600;
+  background-color: #3182ce; /* 蓝色底色 */
+  color: #fff;
   cursor: pointer;
-  transition: border-color 0.25s;
+  box-shadow: 0 2px 8px rgba(49, 130, 206, 0.08);
+  transition: background 0.2s, box-shadow 0.2s;
 }
 button:hover {
-  border-color: #646cff;
+  background-color: #2563eb; /* 深蓝色悬停 */
+  box-shadow: 0 4px 16px rgba(49, 130, 206, 0.16);
 }
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+
+/* 响应式优化 */
+@media (max-width: 1200px) {
+  .order-filter-box {
+    flex-direction: column;
+    padding: 16px 8px;
+  }
+  .input_box1,
+  select,
+  button {
+    margin-inline-end: 0;
+    margin-block-end: 12px;
+    inline-size: 100%;
+  }
 }
 
 @media (prefers-color-scheme: light) {
@@ -61,8 +119,5 @@ button:focus-visible {
   }
   a:hover {
     color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
   }
 }
