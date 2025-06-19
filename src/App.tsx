@@ -14,12 +14,25 @@ function App() {
 		setFiltered(mockOrders);
 	}, []);
 
-	const handleFilter = (keyword: string) => {
+	const handleFilter = (keyword: string, status?: string) => {
 		const kw = keyword.trim().toLowerCase();
+		
 		const filtered = orders.filter((o) =>
-			o.productName.toLowerCase().includes(kw),
+			o.productName.toLowerCase().includes(kw)
 		);
-		setFiltered(filtered);
+		let statusFitter = filtered
+		if (status !== ''){
+			if (status === 'null'){
+				statusFitter = filtered.filter(
+					(o) => o.orderStatus == undefined
+				)
+			}else{
+			statusFitter = filtered.filter(
+				(o) => o.orderStatus == Number(status)
+			)}
+		}
+
+		setFiltered(statusFitter);
 	};
 
 	return (
