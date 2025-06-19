@@ -7,7 +7,7 @@ import { OrderList } from "./components/OrderList";
 
 function App() {
   const [orders] = useState(mockOrders);
-  const [filtered, setFiltered] = useState(mockOrders);
+  const [filtered, setFiltered] = useState<typeof mockOrders>([]);
 
   useEffect(() => {
     // 模拟加载
